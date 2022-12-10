@@ -35,7 +35,7 @@ biolink_bert = pd.read_csv(
 
 You will receive an embedding analogous to this one:
 
-
+![BERT embedding](https://github.com/LucaCappelletti94/biolink_embedding/blob/main/bert.png?raw=true "BERT embedding")
 
 ### SciBERT
 SciBERT is a language model that is based on the BERT model and is specifically trained on scientific text. It was trained on a large corpus of scientific publications in various fields including biology, chemistry, physics, and computer science. This specialized training allows SciBERT to better understand the technical vocabulary and complex sentence structures found in scientific texts. It can be used for tasks such as scientific document classification and information extraction. Like BERT, SciBERT can be fine-tuned for specific tasks and has been shown to outperform other models on scientific text processing tasks.
@@ -54,6 +54,7 @@ biolink_scibert = pd.read_csv(
 
 You will receive an embedding analogous to this one:
 
+![SciBERT embedding](https://github.com/LucaCappelletti94/biolink_embedding/blob/main/scibert.png?raw=true "SciBERT embedding")
 
 ### Specter
 SPECTER is a pre-trained language model to generate document-level embedding of documents. It is pre-trained on a powerful signal of document-level relatedness: the citation graph. Unlike pretrained language models, SPECTER can be easily applied to downstream applications without task-specific fine-tuning.
@@ -72,6 +73,7 @@ biolink_specter = pd.read_csv(
 
 You will receive an embedding analogous to this one:
 
+![Specter embedding](https://github.com/LucaCappelletti94/biolink_embedding/blob/main/specter.png?raw=true "Specter embedding")
 
 ## Re-computing the embedding
 In this section, we provide a step-by-step guide for re-computing the Okapi BM25-weighted embeddings of the Biolink ontological model elements descriptions. All that is needed to re-compute the embeddings is to clone our GitHub repository:
