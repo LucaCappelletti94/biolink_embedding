@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+graphs
+okapi_tfidf_weighted_textual_embedding
+precomputed_word_embedding
+biolink_3.1.1.csv
+.DS_Store
