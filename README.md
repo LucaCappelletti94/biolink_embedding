@@ -1,4 +1,4 @@
-# Biolink BM25-weighted BERT-based embedding
+# BM25-weighted BERT-based embedding of Biolink
 Pipeline to compute Okapi BM25-weighted BERT-based embedding of textual descriptions associated to the [Biolink model](https://biolink.github.io/biolink-model/).
 
 ## What is Biolink?
@@ -26,8 +26,16 @@ You can download the BERT embedding of Biolink by running:
 ```python
 import pandas as pd
 
-biolink_bert = pd.read_csv("")
+biolink_bert = pd.read_csv(
+    "https://github.com/LucaCappelletti94/biolink_embedding/blob/main/biolink_3.1.1_bert_base_uncased.csv.gz?raw=true",
+    compression='gzip',
+    index_col=[0]
+)
 ```
+
+You will receive an embedding analogous to this one:
+
+
 
 ### SciBERT
 SciBERT is a language model that is based on the BERT model and is specifically trained on scientific text. It was trained on a large corpus of scientific publications in various fields including biology, chemistry, physics, and computer science. This specialized training allows SciBERT to better understand the technical vocabulary and complex sentence structures found in scientific texts. It can be used for tasks such as scientific document classification and information extraction. Like BERT, SciBERT can be fine-tuned for specific tasks and has been shown to outperform other models on scientific text processing tasks.
@@ -37,8 +45,15 @@ You can download the SciBERT embedding of Biolink by running:
 ```python
 import pandas as pd
 
-biolink_scibert = pd.read_csv("")
+biolink_scibert = pd.read_csv(
+    "https://github.com/LucaCappelletti94/biolink_embedding/blob/main/biolink_3.1.1_allenai_scibert_scivocab_uncased.csv.gz?raw=true",
+    compression='gzip',
+    index_col=[0]
+)
 ```
+
+You will receive an embedding analogous to this one:
+
 
 ### Specter
 SPECTER is a pre-trained language model to generate document-level embedding of documents. It is pre-trained on a powerful signal of document-level relatedness: the citation graph. Unlike pretrained language models, SPECTER can be easily applied to downstream applications without task-specific fine-tuning.
@@ -48,8 +63,14 @@ You can download the Specter embedding of Biolink by running:
 ```python
 import pandas as pd
 
-biolink_specter = pd.read_csv("")
+biolink_specter = pd.read_csv(
+    "https://github.com/LucaCappelletti94/biolink_embedding/blob/main/biolink_3.1.1_allenai_specter.csv.gz?raw=true",
+    compression='gzip',
+    index_col=[0]
+)
 ```
+
+You will receive an embedding analogous to this one:
 
 
 ## Re-computing the embedding
