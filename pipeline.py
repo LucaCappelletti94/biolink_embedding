@@ -20,7 +20,7 @@ version = data["version"]
 # We convert the data into the DataFrame format we need
 df = pd.DataFrame([
     {
-        "category": category.replace("_", " "),
+        "category": alias.replace("_", " "),
         "description": (
             " "
             if attributes.get("description", " ") is None
@@ -30,6 +30,7 @@ df = pd.DataFrame([
     for group, group_data in data.items()
     if group in category_keys
     for category, attributes in group_data.items()
+    for alias in [*attributes.get("aliases", []), category]
 ])
 
 # We set the path for the data
