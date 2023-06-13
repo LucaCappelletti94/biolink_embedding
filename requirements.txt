@@ -1,2 +1,4 @@
 grape
 pyyaml
+torch
+transformers
