@@ -20,6 +20,7 @@ version = data["version"]
 # We convert the data into the DataFrame format we need
 df = pd.DataFrame([
     {
+        "is_a": attributes.get("is_a", " "),
         "category": alias.replace("_", " "),
         "description": (
             " "
