@@ -1,0 +1,912 @@
+is_a,category,description
+ ,model organism database,Subset that is relevant for a typical Model Organism Database (MOD)
+ ,translator minimal,Minimum subset of translator work
+ ,samples,Sample/biosample datamodel
+ ,testing,TBD
+ ,chemical formula value,A chemical formula
+ ,category type,A primitive type in which the value denotes a class within the biolink model. The value must be a URI or a CURIE. In a Neo4j representation  the value should be the CURIE for the biolink class  for example biolink:Gene. For an RDF representation  the value should be a URI such as https://w3id.org/biolink/vocab/Gene
+ ,iri type,An IRI
+ ,label type,A string that provides a human-readable name for an entity
+ ,predicate type,A CURIE from the biolink related_to hierarchy. For example  biolink:related_to  biolink:causes  biolink:treats.
+ ,narrative text,A string that provides a human-readable description of something
+ ,symbol type, 
+ ,frequency value, 
+ ,percentage frequency value, 
+ ,ratio, 
+ ,quotient, 
+ ,unit, 
+ ,time type, 
+ ,biological sequence, 
+ ,has attribute,connects any entity to an attribute
+ ,has attribute type,connects an attribute to a class that describes it
+ ,has qualitative value,connects an attribute to a value
+ ,has quantitative value,connects an attribute to a value
+ ,has numeric value,connects a quantity value to a number
+ ,has unit,connects a quantity value to a unit
+sequence localization attribute,one-based,A position in the base coordinate system.  Base coordinates start at position 1 instead of position 0.
+sequence localization attribute,fully-closed,A position in the base coordinate system.  Base coordinates start at position 1 instead of position 0.
+sequence localization attribute,base coordinate,A position in the base coordinate system.  Base coordinates start at position 1 instead of position 0.
+ ,node property,A grouping for any property that holds between a node and a value
+ ,id,A unique identifier for an entity. Must be either a CURIE shorthand for a URI or a complete URI
+ ,iri,An IRI for an entity. This is determined by the id using expansion rules.
+ ,type, 
+type,category,Name of the high level ontology class in which this entity is categorized. Corresponds to the label for the biolink entity type class.  * In a neo4j database this MAY correspond to the neo4j label tag.  * In an RDF database it should be a biolink model class URI. This field is multi-valued. It should include values for ancestors of the biolink class; for example  a protein such as Shh would have category values `biolink:Protein`  `biolink:GeneProduct`  `biolink:MolecularEntity`  ... In an RDF database  nodes will typically have an rdf:type triples. This can be to the most specific biolink class  or potentially to a class more specific than something in biolink. For example  a sequence feature `f` may have a rdf:type assertion to a SO class such as TF_binding_site  which is more specific than anything in biolink. Here we would have categories {biolink:GenomicEntity  biolink:MolecularEntity  biolink:NamedThing}
+ ,publication type,Ontology term for publication type may be drawn from Dublin Core types (https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/)  FRBR-aligned Bibliographic Ontology (https://sparontologies.github.io/fabio/current/fabio.html)  the MESH publication types (https://www.nlm.nih.gov/mesh/pubtypes.html)  the Confederation of Open Access Repositories (COAR) Controlled Vocabulary for Resource Type Genres (http://vocabularies.coar-repositories.org/documentation/resource_types/)  Wikidata (https://www.wikidata.org/wiki/Wikidata:Publication_types)  or equivalent publication type ontology. When a given publication type ontology term is used within a given knowledge graph  then the CURIE identified term must be documented in the graph as a concept node of biolink:category biolink:OntologyClass.
+ ,label,A human-readable name for an attribute or entity.
+ ,display name,A human-readable name for an attribute or entity.
+ ,title,A human-readable name for an attribute or entity.
+ ,name,A human-readable name for an attribute or entity.
+association slot,stoichiometry,the relationship between the relative quantities of substances taking part in a reaction or forming a compound  typically a ratio of whole integers.
+association slot,reaction direction,the direction of a reaction as constrained by the direction enum (ie: left_to_right  neutral  etc.)
+association slot,reaction balanced, 
+association slot,reaction side,the side of a reaction being modeled (ie: left or right)
+node property,symbol,Symbol for a particular thing
+node property,alias,Alternate human-readable names for a thing
+node property,synonym,Alternate human-readable names for a thing
+synonym,exact synonym, 
+synonym,broad synonym, 
+synonym,narrow synonym, 
+synonym,related synonym, 
+node property,topic,Connects a node to a vocabulary term or ontology class that describes some aspect of the entity. In general specific characterization is preferred. See https://github.com/biolink/biolink-model/issues/238
+node property,descriptors,Connects a node to a vocabulary term or ontology class that describes some aspect of the entity. In general specific characterization is preferred. See https://github.com/biolink/biolink-model/issues/238
+node property,has topic,Connects a node to a vocabulary term or ontology class that describes some aspect of the entity. In general specific characterization is preferred. See https://github.com/biolink/biolink-model/issues/238
+ ,dbxref,A database cross reference or alternative identifier for a NamedThing or edge between two  NamedThings.  This property should point to a database record or webpage that supports the existence of the edge  or  gives more detail about the edge. This property can be used on a node or edge to provide multiple URIs or CURIE cross references.
+ ,Dbxref,A database cross reference or alternative identifier for a NamedThing or edge between two  NamedThings.  This property should point to a database record or webpage that supports the existence of the edge  or  gives more detail about the edge. This property can be used on a node or edge to provide multiple URIs or CURIE cross references.
+ ,DbXref,A database cross reference or alternative identifier for a NamedThing or edge between two  NamedThings.  This property should point to a database record or webpage that supports the existence of the edge  or  gives more detail about the edge. This property can be used on a node or edge to provide multiple URIs or CURIE cross references.
+ ,record url,A database cross reference or alternative identifier for a NamedThing or edge between two  NamedThings.  This property should point to a database record or webpage that supports the existence of the edge  or  gives more detail about the edge. This property can be used on a node or edge to provide multiple URIs or CURIE cross references.
+ ,source record urls,A database cross reference or alternative identifier for a NamedThing or edge between two  NamedThings.  This property should point to a database record or webpage that supports the existence of the edge  or  gives more detail about the edge. This property can be used on a node or edge to provide multiple URIs or CURIE cross references.
+ ,xref,A database cross reference or alternative identifier for a NamedThing or edge between two  NamedThings.  This property should point to a database record or webpage that supports the existence of the edge  or  gives more detail about the edge. This property can be used on a node or edge to provide multiple URIs or CURIE cross references.
+association slot,semmed agreement count,The number of times this concept has been asserted in the SemMedDB literature database.
+association slot,support graphs,A list of knowledge graphs that support the existence of this node.
+node property,resource id,The CURIE for an Information Resource that served as a source of knowledge expressed in an Edge  or a source of data used to generate this knowledge.
+node property,resource role,The role played by the InformationResource in serving as a source for an Edge. Note that a given Edge should have one and only one 'primary' source  and may have any number of 'aggregator' or 'supporting data' sources.
+ ,retrieval source ids,A list of retrieval sources that served as a source of knowledge expressed in an Edge  or a source of data used to generate this knowledge.
+node property,full name,a long-form human readable name for a thing
+node property,upstream resource ids,An upstream InformationResource from which the resource being described directly retrieved a record of the knowledge expressed in the Edge  or data used to generate this knowledge. This is an array because there are cases where a merged Edge holds knowledge that was retrieved from multiple sources. e.g. an Edge provided by the ARAGORN ARA can expressing knowledge it retrieved from both the automat-mychem-info and molepro KPs  which both provided it with records of this single fact.
+ ,definition,a human-readable description of an entity
+ ,description,a human-readable description of an entity
+node property,systematic synonym,more commonly used for gene symbols in yeast
+node property,affiliation,a professional relationship between one provider (often a person) within another provider (often an organization). Target provider identity should be specified by a CURIE. Providers may have multiple affiliations.
+node property,address,"the particulars of the place where someone or an organization is situated.  For now  this slot is a simple text ""blob"" containing all relevant details of the given location for fitness of purpose. For the moment  this ""address"" can include other contact details such as email and phone number(?)."
+node property,latitude,latitude
+node property,longitude,longitude
+ ,duration,a point in time
+ ,timepoint,a point in time
+node property,publication date,date on which an entity was created. This can be applied to nodes or edges
+node property,creation date,date on which an entity was created. This can be applied to nodes or edges
+node property,update date,date on which an entity was updated. This can be applied to nodes or edges
+node property,aggregate statistic, 
+aggregate statistic,has count,number of things with a particular property
+aggregate statistic,has total,total number of things in a particular reference set
+aggregate statistic,has quotient, 
+aggregate statistic,has percentage,equivalent to has quotient multiplied by 100
+node property,has taxonomic rank, 
+node property,has dataset, 
+node property,source web page, 
+node property,source logo, 
+node property,retrieved on, 
+node property,version of, 
+node property,version, 
+node property,license, 
+node property,rights, 
+node property,format, 
+node property,created with, 
+node property,download url, 
+node property,dataset download url, 
+node property,distribution download url, 
+node property,ingest date, 
+node property,has distribution, 
+node property,published in,CURIE identifier of a broader publication context within which the publication may be placed  e.g. a specified book or journal.
+node property,iso abbreviation,Standard abbreviation for periodicals in the International Organization for Standardization (ISO) 4 system See https://www.issn.org/services/online-services/access-to-the-ltwa/. If the 'published in' property is set  then the iso abbreviation pertains to the broader publication context (the journal) within which the given publication node is embedded  not the publication itself.
+node property,authors,"connects an publication to the list of authors who contributed to the publication. This property should be a comma-delimited list of author names. It is recommended that an author's name be formatted as ""surname  firstname initial."".   Note that this property is a node annotation expressing the citation list of authorship which might typically otherwise be more completely documented in biolink:PublicationToProviderAssociation defined edges which point to full details about an author and possibly  some qualifiers which clarify the specific status of a given author in the publication."
+node property,volume,volume of a book or music release in a collection/series or a published collection of journal issues in a serial publication
+node property,chapter,chapter of a book
+node property,issue,issue of a newspaper  a scientific journal or magazine for reference purpose
+node property,pages,page number of source referenced for statement or publication
+node property,abstract,executive  summary of a publication
+node property,summary,executive  summary of a publication
+node property,keywords,keywords tagging a publication
+node property,mesh terms,mesh terms tagging a publication
+node property,has biological sequence,connects a genomic feature to its sequence
+node property,has gene or gene product,connects an entity with one or more gene or gene products
+has gene or gene product,has gene,connects an entity associated with one or more genes
+node property,has zygosity, 
+node property,has chemical formula,description of chemical compound based on element symbols
+node property,is metabolite,indicates whether a molecular entity is a metabolite
+node property,has constituent,one or more molecular entities within a chemical mixture
+node property,has drug,connects an entity to one or more drugs
+node property,has device,connects an entity to one or more (medical) devices
+node property,has procedure,connects an entity to one or more (medical) procedures
+node property,has receptor,the organism or organism part being exposed
+node property,has stimulus,the process or entity that the receptor is being exposed to
+node property,has stressor,the process or entity that the receptor is being exposed to
+node property,has route,the process that results in the stressor coming into direct contact with the receptor
+qualifier,population context qualifier,a biological population (general  study  cohort  etc.) with a specific set of characteristics to constrain an association.
+qualifier,temporal context qualifier,a constraint of time placed upon the truth value of an association. for time intervales  use temporal interval qualifier.
+temporal context qualifier,temporal interval qualifier,a constraint of a time interval placed upon the truth value of an association.
+node property,is supplement,
+node property,trade name,
+node property,available from,
+node property,is toxic,
+related to at concept level,has chemical role,A role is particular behaviour which a chemical entity may exhibit.
+node property,max tolerated dose,The highest dose of a drug or treatment that does not cause unacceptable side effects. The maximum tolerated dose is determined in clinical trials by testing increasing doses on different groups of people until the highest dose with acceptable side effects is found. Also called MTD.
+node property,animal model available from,
+association slot,FDA adverse event level,
+ ,highest FDA approval status,Should be the highest level of FDA approval this chemical entity or device has  regardless of which disease  condition or phenotype it is currently being reviewed to treat.  For specific levels of FDA approval for a specific condition  disease  phenotype  etc.  see the association slot  'FDA approval status.'
+ ,max phase,An agglomeration of drug regulatory status worldwide. Not specific to FDA.
+ ,drug regulatory status world wide,An agglomeration of drug regulatory status worldwide. Not specific to FDA.
+ ,routes of delivery,the method or process of administering a pharmaceutical compound to achieve a therapeutic effect in humans or animals.
+qualifier,form or variant qualifier,A qualifier that composes with a core subject/object concept to define a specific type  variant  alternative version of this concept. The composed concept remains a subtype or instance of the core concept. For example  the qualifier ‘mutation’ combines with the core concept ‘Gene X’ to express the compose concept ‘a mutation of Gene X’.
+qualifier,aspect qualifier,Composes with the core concept to describe new concepts of a different ontological type. e.g. a process in which the core concept participates  a function/activity/role held by the core concept  or a characteristic/quality that inheres in the core concept.  The purpose of the aspect slot is to indicate what aspect is being affected in an  'affects' association.
+qualifier,derivative qualifier,A qualifier that composes with a core subject/object  concept to describe something that is derived from the core concept.  For example  the qualifier ‘metabolite’ combines with a ‘Chemical X’ core concept to express the composed concept ‘a metabolite of Chemical X’.
+qualifier,part qualifier,defines a specific part/component of the core concept (used in cases there this specific part has no IRI we can use to directly represent it  e.g. 'ESR1 transcript' q: polyA tail).
+qualifier,context qualifier,Restricts the setting/context/location where the core concept (or qualified core concept) resides or occurs.
+qualifier,direction qualifier,Composes with the core concept (+ aspect if provided) to describe a change in its direction or degree.
+ ,mapped predicate,The predicate that is being replaced by the fully qualified representation of predicate + subject and object  qualifiers.  Only to be used in test data and mapping data to help with the transition to the fully qualified predicate model. Not to be used in knowledge graphs.
+ ,predicate mappings,A collection of relationships that are not used in biolink  but have biolink patterns that can  be used to replace them.  This is a temporary slot to help with the transition to the fully qualified predicate model in Biolink3.
+ ,exact matches,A list of terms from different schemas or terminology systems that have an identical meaning. Such terms often describe the same concept from different ontological perspectives.
+ ,narrow matches,A list of terms from different schemas or terminology systems that have a narrower meaning. Such terms often describe a more specific concept from different ontological perspectives.
+ ,broad matches,A list of terms from different schemas or terminology systems that have a broader meaning. Such terms often describe a more general concept from different ontological perspectives.
+aspect qualifier,subject aspect qualifier, 
+form or variant qualifier,subject form or variant qualifier, 
+part qualifier,subject part qualifier, 
+derivative qualifier,subject derivative qualifier, 
+context qualifier,subject context qualifier, 
+direction qualifier,subject direction qualifier, 
+aspect qualifier,object aspect qualifier, 
+form or variant qualifier,object form or variant qualifier, 
+part qualifier,object part qualifier, 
+derivative qualifier,object derivative qualifier, 
+context qualifier,object context qualifier, 
+direction qualifier,object direction qualifier, 
+qualifier,qualified predicate,Predicate to be used in an association when subject and object qualifiers are present and the full reading of the statement requires a qualification to the predicate in use in order to refine or  increase the specificity of the full statement reading.  This qualifier holds a relationship to be used instead of that  expressed by the primary predicate  in a ‘full statement’ reading of the association  where qualifier-based  semantics are included.  This is necessary only in cases where the primary predicate does not work in a  full statement reading.
+association slot,qualifier,grouping slot for all qualifiers on an edge.  useful for testing compliance with association classes
+qualifier,statement qualifier,
+statement qualifier,causal mechanism qualifier,A statement qualifier representing a type of molecular control mechanism through which an effect of a chemical on a gene or gene product is mediated (e.g. 'agonism'  'inhibition'  'allosteric modulation'  'channel blocker')
+statement qualifier,anatomical context qualifier,A statement qualifier representing an anatomical location where an relationship expressed in an association took place (can be a tissue  cell type  or sub-cellular location).
+statement qualifier,species context qualifier,A statement qualifier representing a taxonomic category of species in which a relationship expressed in an association took place.
+association slot,qualifiers,connects an association to qualifiers that modify or qualify the meaning of that association
+qualifier,frequency qualifier,a qualifier used in a phenotypic association to state how frequent the phenotype is observed in the subject
+qualifier,severity qualifier,a qualifier used in a phenotypic association to state how severe the phenotype is in the subject
+qualifier,sex qualifier,a qualifier used in a phenotypic association to state whether the association is specific to a particular sex.
+qualifier,onset qualifier,a qualifier used in a phenotypic association to state when the phenotype appears is in the subject
+association slot,clinical modifier qualifier,the method or process of administering a pharmaceutical compound to achieve a therapeutic effect in humans or animals.
+association slot,sequence variant qualifier,a qualifier used in an association with the variant
+association slot,quantifier qualifier,A measurable quantity for the object of the association
+association slot,catalyst qualifier,a qualifier that connects an association between two causally connected entities (for example  two chemical entities  or a chemical entity in that changes location) and the gene product  gene  or complex that enables or catalyzes the change.
+association slot,stage qualifier,stage during which gene or protein expression of takes place.
+ ,related to,A relationship that is asserted between two named things
+related to,related to at concept level,Represents a relationship held between terminology components that describe the conceptual model of a domain.
+related to,related to at instance level,Represents a relationship held between two instances of a data classes.  Much like an assertion component  in an ABox  these represent facts associated with the conceptual model.
+related to at instance level,associated with,Expresses a relationship between two named things where the relationship is typically generated statistically (though not in all cases)  and is weaker than its child  'correlated with'  but stronger than its parent  'related to'. This relationship holds between two concepts represented by variables for which a statistical  dependence is demonstrated.  E.g. the statement “Atrial Fibrillation (Afib) is associated with Myocardial  Infraction (MI)” asserts that having Afib is not statistically independent from whether a patient  will also have MI. Note that in Translator associations  the subject and object concepts may map exactly to  the statistical variables  or represent related entities for which the variables serve as proxies in an  Association (e.g. diseases  chemical entities or processes).
+related to at concept level,superclass of,holds between two classes where the domain class is a super class of the range class
+related to at concept level,subclass of,holds between two classes where the domain class is a specialization of the range class
+exact match,same as,holds between two entities that are considered equivalent to each other
+related to at concept level,close match,a list of terms from different schemas or terminology systems that have a semantically similar but not strictly equivalent  broader  or narrower meaning. Such terms often describe the same general concept from different ontological perspectives (e.g. drug as a type of chemical entity versus drug as a type of role borne by a chemical entity).
+close match,exact match,holds between two entities that have strictly equivalent meanings  with a high degree of confidence
+related to at concept level,broad match,a list of terms from different schemas or terminology systems that have a broader  more general meaning. Broader terms are typically shown as parents in a hierarchy or tree.
+related to at concept level,narrow match,a list of terms from different schemas or terminology systems that have a narrower  more specific meaning. Narrower terms are typically shown as children in a hierarchy or tree.
+related to at concept level,member of,Defines a mereological relation between a item and a collection.
+related to at concept level,has member,Defines a mereological relation between a collection and an item.
+related to at instance level,opposite of,x is the opposite of y if there exists some distance metric M  and there exists no z such as M(x z) <= M(x y) or M(y z) <= M(y x). (This description is from RO. Needs to be rephrased).
+associated with,associated with likelihood of,A a relationship that holds between two concepts represented by variables for which a statistical  dependence is demonstrated  wherein the state or value of one variable predicts the future state  or value of the other.  E.g. the statement “An Atrial Fibrillation (Afib) diagnosis is associated  with likelihood of a Myocardial Infraction (MI) diagnosis” asserts that the state of having Afib  is associated with an increased or decreased likelihood that a patient will later exhibit MI.
+associated with,likelihood associated with,
+associated with likelihood of,associated with increased likelihood of,Expresses a relationship between two named things where the relationship is typically generated statistically and the state or fact of something is more probable.
+likelihood associated with,increased likelihood associated with,
+associated with likelihood of,associated with decreased likelihood of,Expresses a relationship between two named things where the relationship is typically generated statistically and the state or fact of something is less probable.
+likelihood associated with,decreased likelihood associated with,
+related to at instance level,target for,A gene is a target of a disease when its products are druggable and when a drug interaction with the gene product could have a therapeutic effect
+related to at instance level,has target, 
+related to at instance level,active in, 
+related to at instance level,has active component, 
+related to at instance level,acts upstream of, 
+related to at instance level,has upstream actor, 
+acts upstream of,acts upstream of positive effect, 
+has upstream actor,has positive upstream actor, 
+acts upstream of,acts upstream of negative effect, 
+has upstream actor,has negative upstream actor, 
+acts upstream of,acts upstream of or within, 
+has upstream actor,has upstream or within actor, 
+acts upstream of or within,acts upstream of or within positive effect, 
+has upstream or within actor,has positive upstream or within actor, 
+acts upstream of or within,acts upstream of or within negative effect, 
+has upstream or within actor,has negative upstream or within actor, 
+related to at instance level,mentions,refers to is a relation between one information content entity and the named thing that it makes reference to.
+related to at instance level,mentioned by,refers to is a relation between one named thing and the information content entity that it makes reference to.
+related to at instance level,contributor, 
+related to at instance level,has contributor, 
+contributor,provider,person  group  organization or project that provides a piece of information (e.g. a knowledge association).
+has contributor,has provider, 
+contributor,publisher,"organization or person responsible for publishing books  periodicals  podcasts  games or software. Note that in the case of publications which have a containing ""published in"" node property  the publisher association may not be attached directly to the embedded child publication  but only made in between the parent's publication node and the publisher agent of the encompassing publication (e.g. only from the Journal referenced by the 'published_in' property of an journal article Publication node)."
+has contributor,has publisher, 
+contributor,editor,"editor of a compiled work such as a book or a periodical (newspaper or an academic journal). Note that in the case of publications which have a containing ""published in"" node property  the editor association may not be attached directly to the embedded child publication  but only made in between the parent's publication node and the editorial agent of the encompassing publication (e.g. only from the Book referenced by the 'published_in' property of a book chapter Publication node)."
+has contributor,has editor, 
+contributor,author,an instance of one (co-)creator primarily responsible for a written work
+has contributor,has author, 
+related to at instance level,was assayed against,The effect of a thing on a target was interrogated in some assay. A relationship between some perturbing agent (usually a chemical compound) and some target entity  where the affect of the perturbing agent on the target entity was interrogated in a particular assay. The target might be a particular protein  tissue  phenotype  whole organism  cell line  or other type of biological entity.
+related to at instance level,assesses,The effect of a thing on a target was interrogated in some assay. A relationship between some perturbing agent (usually a chemical compound) and some target entity  where the affect of the perturbing agent on the target entity was interrogated in a particular assay. The target might be a particular protein  tissue  phenotype  whole organism  cell line  or other type of biological entity.
+related to at instance level,is assessed by, 
+related to at instance level,interacts with,holds between any two entities that directly or indirectly interact with each other
+interacts with,physically interacts with,holds between two entities that make physical contact as part of some interaction.  does not imply a causal relationship.
+physically interacts with,directly physically interacts with,A causal mechanism mediated by a direct contact between the effector and target entities (this contact may  be weak or strong  transient or stable).
+directly physically interacts with,binds,A causal mechanism mediated by the direct contact between effector and target chemical or biomolecular entity   which form a stable physical interaction.
+physically interacts with,indirectly physically interacts with, 
+interacts with,genetically interacts with,holds between two genes whose phenotypic effects are dependent on each other in some way - such that their combined phenotypic effects are the result of some interaction between the activity of their gene products. Examples include epistasis and synthetic lethality.
+genetically interacts with,gene fusion with,holds between two independent genes that have fused through  translocation  interstitial deletion  or chromosomal inversion to  form a new  hybrid gene. Fusion genes are often implicated in various neoplasms and cancers.
+genetically interacts with,genetic neighborhood of,holds between two genes located nearby one another on a chromosome. 
+related to at instance level,affects,describes an entity that has a direct affect on the state or quality of another existing entity. Use of the 'affects' predicate implies that the affected entity already exists  unlike predicates such as 'affects risk for' and 'prevents  where the outcome is something that may or may not come to be.
+related to at instance level,affected by,describes an entity of which the state or quality is affected by another existing entity.
+associated with,associated with sensitivity to,A relation that holds between a named thing and a chemical that specifies that the change in the named thing is found to be associated with the degree of sensitivity to treatment by the chemical.
+associated with,sensitivity associated with, 
+associated with,associated with resistance to,A relation that holds between a named thing and a chemical that specifies that the change in the named thing is found to be associated with the degree of resistance to treatment by the chemical.
+associated with,resistance associated with, 
+related to at instance level,diagnoses,a relationship that identifies the nature of (an illness or other problem) by examination  of the symptoms.
+related to at instance level,is diagnosed by, 
+related to at instance level,increases amount or activity of,A grouping mixin to help with searching for all the predicates that increase the amount or activity of the object.
+related to at instance level,amount or activity increased by, 
+related to at instance level,decreases amount or activity of,A grouping mixin to help with searching for all the predicates that decrease the amount or activity of the object.
+related to at instance level,amount or activity decreased by, 
+ ,chemical role mixin,A role played by the chemical entity or part thereof within a chemical context.
+ ,biological role mixin,A role played by the chemical entity or part thereof within a biological context.
+affects,affects response to, 
+affected by,response affected by,holds between two chemical entities where the susceptibility of a biological entity or system (e.g. an organism  cell  cellular component  macromolecular machine mixin  biological or pathological process) of one is affected by the action of the other.
+affects response to,increases response to,holds between two chemical entities where the action or effect of one increases the susceptibility of a biological entity or system (e.g. an organism  cell  cellular component  macromolecular machine mixin  biological or pathological process) to the other
+response affected by,response increased by, 
+affects response to,decreases response to,holds between two chemical entities where the action or effect of one decreases the susceptibility of a biological entity or system (e.g. an organism  cell  cellular component  macromolecular machine mixin  biological or pathological process) to the other
+response affected by,response decreased by, 
+affects,regulates,A more specific form of affects  that implies the effect results from a biologically evolved control mechanism. Gene-affects-gene relationships will (almost) always involve regulation.  Exogenous/environmental chemical-affects-gene relationships  are not cases of regulation in this definition. Instead these would be captured using the 'affects' predicate  or possibly one of the 'interacts with' predicates depending on the nature of the interaction.
+affected by,regulated by, 
+affects,disease causes disruption of,describes a relationship where one entity degrades or interferes with the structure  function  or occurrence of another.
+affects,disrupts,describes a relationship where one entity degrades or interferes with the structure  function  or occurrence of another.
+affected by,disrupted by,describes a relationship where the structure  function  or occurrence of one entity is degraded or interfered with by another.
+related to at instance level,gene product of,definition x has gene product of y if and only if y is a gene (SO:0000704) that participates in some gene expression process (GO:0010467) where the output of thatf process is either y or something that is ribosomally translated from x
+related to at instance level,has gene product,holds between a gene and a transcribed and/or translated product generated from it
+related to at instance level,transcribed to,inverse of transcribed from
+related to at instance level,transcribed from,x is transcribed from y if and only if x is synthesized from template y
+related to at instance level,translates to,x (amino acid chain/polypeptide) is the ribosomal translation of y (transcript) if and only if a ribosome reads y (transcript) through a series of triplet codon-amino acid adaptor activities (GO:0030533) and produces x (amino acid chain/polypeptide)
+related to at instance level,translation of,inverse of translates to
+similar to,in homology relationship with,holds between two biological entities that have common evolutionary origin
+similar to,homologous to,holds between two biological entities that have common evolutionary origin
+homologous to,paralogous to,a homology relationship that holds between entities (typically genes) that diverged after a duplication event.
+homologous to,orthologous to,a homology relationship between entities (typically genes) that diverged after a speciation event.
+homologous to,xenologous to,a homology relationship characterized by an interspecies (horizontal) transfer since the common ancestor.
+related to at instance level,coexists with,holds between two entities that are co-located in the same aggregate object  process  or spatio-temporal region
+coexists with,in pathway with,holds between two genes or gene products that are part of in the same biological pathway
+coexists with,in complex with,holds between two genes or gene products that are part of (or code for products that are part of) in the same macromolecular complex
+coexists with,in cell population with,holds between two genes or gene products that are expressed in the same cell type or population
+coexists with,colocalizes with,holds between two entities that are observed to be located in the same place.
+associated with,genetic association, 
+associated with,genetically associated with,
+genetically associated with,gene associated with condition,holds between a gene and a disease or phenotypic feature that the gene or its alleles/products may influence  contribute to  or correlate with
+genetically associated with,disease associated with gene,holds between a gene and a disease or phenotypic feature that may be influenced  contribute to  or be correlated with the gene or its alleles/products
+genetically associated with,condition associated with gene,holds between a gene and a disease or phenotypic feature that may be influenced  contribute to  or be correlated with the gene or its alleles/products
+related to at instance level,affects risk for,holds between two entities where exposure to one entity alters the chance of developing the other
+related to at instance level,risk affected by, 
+affects risk for,predisposes,holds between two entities where exposure to one entity increases the chance of developing the other
+risk affected by,has predisposing factor, 
+related to at instance level,contributes to,holds between two entities where the occurrence  existence  or activity of one contributes to the occurrence or generation of the other
+related to at instance level,contribution from, 
+contributes to,causes,holds between two entities where the occurrence  existence  or activity of one causes the occurrence or generation of the other
+contribution from,disease caused by disruption of,holds between two entities where the occurrence  existence  or activity of one is caused by the occurrence or generation of the other
+contribution from,disease has basis in dysfunction of,holds between two entities where the occurrence  existence  or activity of one is caused by the occurrence or generation of the other
+contribution from,realized in response to,holds between two entities where the occurrence  existence  or activity of one is caused by the occurrence or generation of the other
+contribution from,realized in response to stimulus,holds between two entities where the occurrence  existence  or activity of one is caused by the occurrence or generation of the other
+contribution from,caused by,holds between two entities where the occurrence  existence  or activity of one is caused by the occurrence or generation of the other
+affects,ameliorates,A relationship between an entity (e.g. a genotype  genetic variation  chemical  or environmental exposure  clinical intervention) and a condition (a phenotype or disease)  where the presence of the entity reduces or eliminates some or all aspects of the condition.
+affected by,is ameliorated by, 
+affects,exacerbates,A relationship between an entity (e.g. a chemical  environmental exposure  or some form of genetic variation) and a condition (a phenotype or disease)  where the presence of the entity worsens some or all aspects of the condition.
+affected by,is exacerbated by, 
+ameliorates,is substance that treats,holds between a therapeutic procedure or chemical entity and a disease or phenotypic feature that it is used to treat
+ameliorates,indicated for,holds between a therapeutic procedure or chemical entity and a disease or phenotypic feature that it is used to treat
+ameliorates,treats,holds between a therapeutic procedure or chemical entity and a disease or phenotypic feature that it is used to treat
+is ameliorated by,treated by,holds between a disease or phenotypic feature and a therapeutic process or chemical entity that is used to treat the condition
+affects risk for,prevents,holds between an entity whose application or use reduces the likelihood of a potential outcome. Typically used to associate a chemical entity  exposure  activity  or medical intervention that can prevent the onset a disease or phenotypic feature.
+risk affected by,prevented by,holds between a potential outcome of which the likelihood was reduced by the application or use of an entity.
+associated with,correlated with,A relationship that holds between two concepts represented by variables for which a statistical dependence is  demonstrated using a correlation analysis method.
+correlated with,positively correlated with,A relationship that holds between two concepts represented by variables for which a statistical correlation  is demonstrated  wherein variable values move together in the same direction (i.e. increased in one or  presence of one correlates with an increase or presence of the other).
+correlated with,negatively correlated with,A relationship that holds between two concepts represented by variables for which a statistical correlation  is demonstrated  wherein variable values move in opposite directions (i.e. increased in one or presence of  one correlates with a decrease or absence of the other).
+correlated with,occurs together in literature with,holds between two entities where their co-occurrence is correlated by counts of publications in which both occur  using some threshold of occurrence as defined by the edge provider.
+correlated with,coexpressed with,holds between any two genes or gene products  in which both are generally expressed within a single defined experimental context.
+correlated with,has biomarker,holds between a disease or phenotypic feature and a measurable chemical entity that is used as an indicator of the presence or state of the disease or feature.  # metabolite
+correlated with,biomarker for,holds between a measurable chemical entity and a disease or phenotypic feature  where the entity is used as an indicator of the presence or state of the disease or feature.
+located in,expressed in,holds between a gene or gene product and an anatomical entity in which it is expressed
+location of,anatomy expresses gene,holds between an anatomical entity and gene or gene product that is expressed there
+location of,expresses,holds between an anatomical entity and gene or gene product that is expressed there
+related to at instance level,disease presents symptom,holds between a biological entity and a phenotype  where a phenotype is construed broadly as any kind of quality of an organism part  a collection of these qualities  or a change in quality or qualities (e.g. abnormally increased temperature). In SNOMEDCT  disorders with keyword 'characterized by' should translate into this predicate.
+related to at instance level,has phenotype,holds between a biological entity and a phenotype  where a phenotype is construed broadly as any kind of quality of an organism part  a collection of these qualities  or a change in quality or qualities (e.g. abnormally increased temperature). In SNOMEDCT  disorders with keyword 'characterized by' should translate into this predicate.
+related to at instance level,phenotype of, 
+related to at instance level,occurs in,holds between a process and a material entity or site within which the process occurs
+related to at instance level,contains process, 
+related to at instance level,located in,holds between a material entity and a material entity or site within which it is located (but of which it is not considered a part)
+related to at instance level,site of,holds between material entity or site and a material entity that is located within it (but not considered a part of it)
+related to at instance level,location of,holds between material entity or site and a material entity that is located within it (but not considered a part of it)
+related to,disease has location,A relationship between a disease and an anatomical entity where the disease has one or more features that are located in that entity.
+related to,location of disease, 
+related to at instance level,similar to,holds between an entity and some other entity with similar features.
+similar to,chemically similar to,holds between one small molecule entity and another that it approximates for purposes of scientific study  in virtue of its exhibiting similar features of the studied entity.
+related to at instance level,has sequence location,holds between two nucleic acid entities when the subject can be localized in sequence coordinates on the object. For example  between an exon and a chromosome/contig.
+related to at instance level,sequence location of, 
+related to at instance level,model of,holds between a thing and some other thing it approximates for purposes of scientific study  in virtue of its exhibiting similar features of the studied entity.
+related to at instance level,models, 
+related to at instance level,overlaps,holds between entities that overlap in their extents (materials or processes)
+overlaps,has part,holds between wholes and their parts (material entities or processes)
+has part,has plasma membrane part,Holds between a cell c and a protein complex or protein p if and only if that cell has as part a plasma_membrane[GO:0005886]  and that plasma membrane has p as part.
+related to,composed primarily of,x composed_primarily_of_y if:more than half of the mass of x is made from parts of y.
+related to,primarily composed of, 
+part of,plasma membrane part of, 
+overlaps,part of,holds between parts and wholes (material entities or processes)
+has participant,has input,holds between a process and a continuant  where the continuant is an input into the process
+participates in,is input of, 
+has participant,has output,holds between a process and a continuant  where the continuant is an output of the process
+participates in,is output of, 
+related to at instance level,has participant,holds between a process and a continuant  where the continuant is somehow involved in the process
+participates in,catalyzes, 
+has participant,has catalyst, 
+has participant,has substrate, 
+participates in,is substrate of, 
+related to at instance level,participates in,holds between a continuant and a process  where the continuant is somehow involved in the process
+participates in,involved in,holds between a continuant and a process or function  where the continuant actively contributes to part or all of the process or function it realizes
+participates in,actively involved in,holds between a continuant and a process or function  where the continuant actively contributes to part or all of the process or function it realizes
+has participant,actively involves, 
+actively involved in,capable of,holds between a physical entity and process or function  where the continuant alone has the ability to carry out the process or function.
+actively involves,can be carried out by, 
+participates in,enables,holds between a physical entity and a process  where the physical entity executes the process
+has participant,enabled by,holds between a process and a physical entity  where the physical entity executes the process
+related to at instance level,is normal cell origin of disease,holds between two distinct material entities  the old entity and the new entity  in which the new entity begins to exist when the old entity ceases to exist  and the new entity inherits the significant portion of the matter of the old entity
+related to at instance level,may be normal cell origin of disease,holds between two distinct material entities  the old entity and the new entity  in which the new entity begins to exist when the old entity ceases to exist  and the new entity inherits the significant portion of the matter of the old entity
+related to at instance level,derives into,holds between two distinct material entities  the old entity and the new entity  in which the new entity begins to exist when the old entity ceases to exist  and the new entity inherits the significant portion of the matter of the old entity
+related to at instance level,derives from,holds between two distinct material entities  the new entity and the old entity  in which the new entity begins to exist when the old entity ceases to exist  and the new entity inherits the significant portion of the matter of the old entity
+derives from,is metabolite of,holds between two molecular entities in which the first one is derived from the second one as a product of metabolism
+derives into,has metabolite,holds between two molecular entities in which the second one is derived from the first one as a product of metabolism
+part of,food component of,holds between a one or more chemical entities present in food  irrespective of nutritional value (i.e. could also be a contaminant or additive)
+has part,has food component,holds between food and one or more chemical entities composing it  irrespective of nutritional value (i.e. could also be a contaminant or additive)
+food component of,nutrient of,holds between a one or more chemical entities present in food  irrespective of nutritional value (i.e. could also be a contaminant or additive)
+has food component,has nutrient,one or more nutrients which are growth factors for a living organism
+part of,is active ingredient of,holds between a molecular entity and a drug  in which the former is a part of the latter  and is a biologically active component
+has part,has active ingredient,holds between a drug and a molecular entity in which the latter is a part of the former  and is a biologically active component
+part of,is excipient of,holds between a molecular entity and a drug in which the former is a part of the latter  and is a biologically inactive component
+has part,has excipient,holds between a drug and a molecular entities in which the latter is a part of the former  and is a biologically inactive component
+related to at instance level,manifestation of,that part of a phenomenon which is directly observable or visibly expressed  or which gives evidence to the underlying process; used in SemMedDB for linking things like dysfunctions and processes to some disease or syndrome
+related to at instance level,has manifestation, 
+manifestation of,mode of inheritance of, 
+has manifestation,has mode of inheritance,Relates a disease or phenotypic feature to its observed genetic segregation and assumed associated underlying DNA manifestation (i.e. autosomal  sex or mitochondrial chromosome).
+related to at instance level,produces,holds between a material entity and a product that is generated through the intentional actions or functioning of the material entity
+related to at instance level,produced by, 
+has input,consumes, 
+is input of,consumed by, 
+related to at instance level,temporally related to,holds between two entities with a temporal relationship
+temporally related to,precedes,holds between two processes  where one completes before the other begins
+temporally related to,preceded by,holds between two processes  where the other is completed before the one begins
+has part,has variant part,holds between a nucleic acid entity and a nucleic acid entity that is a sub-component of it
+part of,variant part of, 
+related to at instance level,related condition, 
+related to at instance level,gene product sequence variation encoded by gene mutant,holds between a sequence variant and a nucleic acid entity
+related to at instance level,allelic variant of,holds between a sequence variant and a nucleic acid entity
+related to at instance level,gene product variant of gene product,holds between a sequence variant and a nucleic acid entity
+related to at instance level,is sequence variant of,holds between a sequence variant and a nucleic acid entity
+related to at instance level,has sequence variant, 
+is sequence variant of,is missense variant of,holds between a gene  and a sequence variant  such the sequence variant results in a different amino acid sequence but where the length is preserved.
+has sequence variant,has missense variant, 
+is sequence variant of,is synonymous variant of,holds between a sequence variant and a gene  such the sequence variant is in the coding sequence of the gene  but results in the same amino acid sequence
+has sequence variant,stop gained, 
+has sequence variant,has synonymous variant, 
+is sequence variant of,is nonsense variant of,holds between a sequence variant and a gene  such the sequence variant results in a premature stop codon
+has sequence variant,has nonsense variant, 
+is sequence variant of,frameshift variant,holds between a sequence variant and a gene  such the sequence variant causes a disruption of the translational reading frame  because the number of nucleotides inserted or deleted is not a multiple of three.
+is sequence variant of,start lost,holds between a sequence variant and a gene  such the sequence variant causes a disruption of the translational reading frame  because the number of nucleotides inserted or deleted is not a multiple of three.
+is sequence variant of,stop lost,holds between a sequence variant and a gene  such the sequence variant causes a disruption of the translational reading frame  because the number of nucleotides inserted or deleted is not a multiple of three.
+is sequence variant of,is frameshift variant of,holds between a sequence variant and a gene  such the sequence variant causes a disruption of the translational reading frame  because the number of nucleotides inserted or deleted is not a multiple of three.
+has sequence variant,splice region variant, 
+has sequence variant,splice acceptor variant, 
+has sequence variant,splice donor variant, 
+has sequence variant,has frameshift variant, 
+is sequence variant of,is splice site variant of,holds between a sequence variant and a gene  such the sequence variant is in the canonical splice site of one of the gene's exons.
+has sequence variant,downstream gene variant, 
+has sequence variant,upstream gene variant, 
+has sequence variant,has splice site variant, 
+is sequence variant of,is nearby variant of,holds between a sequence variant and a gene sequence that the variant is genomically close to.
+has sequence variant,intron variant, 
+has sequence variant,3 prime UTR variant, 
+has sequence variant,5 prime UTR variant, 
+has sequence variant,5 prime UTR premature start codon gain variant, 
+has sequence variant,non coding transcript exon variant, 
+has sequence variant,has nearby variant, 
+is sequence variant of,is non coding variant of,holds between a sequence variant and a gene  where the variant does not affect the coding sequence
+has sequence variant,has non coding variant, 
+related to at instance level,disease has basis in,A relation that holds between a disease and an entity where the state of the entity has contribution to the disease.
+related to at instance level,occurs in disease, 
+affects,adverse effect,An untoward medical occurrence in a patient or clinical investigation subject that happens during treatment  with a therapeutic agent. Adverse events may be caused by something  other than the drug or therapy being given and may include abnormal laboratory finding  symptoms  or  diseases temporally associated with the treatment  whether or not considered related to the treatment.  Adverse events are unintended effects that occur when a medication is administered correctly.
+affects,has adverse event,An untoward medical occurrence in a patient or clinical investigation subject that happens during treatment  with a therapeutic agent. Adverse events may be caused by something  other than the drug or therapy being given and may include abnormal laboratory finding  symptoms  or  diseases temporally associated with the treatment  whether or not considered related to the treatment.  Adverse events are unintended effects that occur when a medication is administered correctly.
+affected by,adverse event of, 
+affects,adverse drug reaction,An unintended  but predictable  secondary effect shown to be correlated with a therapeutic agent  drug or treatment. Side effects happen at normal  recommended doses or treatments  and are unrelated to the intended purpose of  the medication.
+affects,has side effect,An unintended  but predictable  secondary effect shown to be correlated with a therapeutic agent  drug or treatment. Side effects happen at normal  recommended doses or treatments  and are unrelated to the intended purpose of  the medication.
+affected by,is side effect of, 
+related to at instance level,contraindicated for,Holds between a drug and a disease or phenotype  such that a person with that disease should not be treated with the drug.
+related to at instance level,has contraindication, 
+related to at instance level,has not completed,holds between an entity and a process that the entity is capable of  but has not completed
+related to at instance level,not completed by, 
+related to at instance level,has completed,holds between an entity and a process that the entity is capable of and has completed
+related to at instance level,completed by, 
+related to at instance level,in linkage disequilibrium with,holds between two sequence variants  the presence of which are correlated in a population
+related to at instance level,has increased amount, 
+related to at instance level,increased amount of, 
+related to at instance level,has decreased amount, 
+related to at instance level,decreased amount in, 
+related to at instance level,lacks part, 
+related to at instance level,missing from, 
+related to at instance level,develops from, 
+related to at instance level,develops into, 
+related to at instance level,instance of,connects an entity to its taxonomic classification. Only certain kinds of entities can be taxonomically classified; see 'thing with taxon'
+related to at instance level,is organism source of gene product,connects an entity to its taxonomic classification. Only certain kinds of entities can be taxonomically classified; see 'thing with taxon'
+related to at instance level,organism has gene,connects an entity to its taxonomic classification. Only certain kinds of entities can be taxonomically classified; see 'thing with taxon'
+related to at instance level,gene found in organism,connects an entity to its taxonomic classification. Only certain kinds of entities can be taxonomically classified; see 'thing with taxon'
+related to at instance level,gene product has organism source,connects an entity to its taxonomic classification. Only certain kinds of entities can be taxonomically classified; see 'thing with taxon'
+related to at instance level,in taxon,connects an entity to its taxonomic classification. Only certain kinds of entities can be taxonomically classified; see 'thing with taxon'
+node property,in taxon label,The human readable scientific name for the taxon of the entity.
+related to at instance level,taxon of, 
+related to at instance level,allele has activity,connects a sequence variant to a class describing the molecular consequence. E.g.  SO:0001583
+related to at instance level,has molecular consequence,connects a sequence variant to a class describing the molecular consequence. E.g.  SO:0001583
+related to at instance level,is molecular consequence of, 
+ ,edge property,any slot that relates an association to another entity
+ ,statement property,any slot that relates an association to another entity
+ ,node qualifier,any slot that relates an association to another entity
+ ,edge qualifier,any slot that relates an association to another entity
+ ,statement qualifier,any slot that relates an association to another entity
+ ,association slot,any slot that relates an association to another entity
+association slot,original subject,used to hold the original subject of a relation (or predicate) that an external knowledge source uses before transformation to match the biolink-model specification.
+association slot,original object,used to hold the original object of a relation (or predicate) that an external knowledge source uses before transformation to match the biolink-model specification.
+association slot,original relation,used to hold the original relation/predicate that an external knowledge source uses before transformation to match the biolink-model specification.
+association slot,relation,used to hold the original relation/predicate that an external knowledge source uses before transformation to match the biolink-model specification.
+association slot,original predicate,used to hold the original relation/predicate that an external knowledge source uses before transformation to match the biolink-model specification.
+association slot,subject closure,Used to hold the subject closure of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,object closure,Used to hold the object closure of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,subject category,Used to hold the biolink class/category of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,object category,Used to hold the biolink class/category of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,subject category closure,Used to hold the subject category closure of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,object category closure,Used to hold the object category closure of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,subject label closure,Used to hold the subject label closure of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,object label closure,Used to hold the object label closure of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,subject prefix,Used to hold the subject namespace of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,subject namespace,Used to hold the subject namespace of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,object prefix,Used to hold the object namespace of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,object namespace,Used to hold the object namespace of an association. This is a denormalized  field used primarily in the SQL serialization of a knowledge graph via KGX.
+association slot,subject,connects an association to the subject of the association. For example  in a gene-to-phenotype association  the gene is subject and phenotype is object.
+association slot,object,connects an association to the object of the association. For example  in a gene-to-phenotype association  the gene is subject and phenotype is object.
+association slot,predicate,A high-level grouping for the relationship type. AKA minimal predicate. This is analogous to category for nodes.
+association slot,logical interpretation, 
+ ,relation, 
+association slot,negated,if set to true  then the association is negated i.e. is not true
+association slot,has confidence level,connects an association to a qualitative term denoting the level of confidence
+association slot,has evidence,connects an association to an instance of supporting evidence
+association slot,has supporting study result,connects an association to an instance of supporting study result
+association slot,log odds ratio,The logarithm of the odds ratio  or the ratio of the odds of event Y occurring in an exposed group versus the  odds of event Y occurring in a non-exposed group.
+association slot,log odds ratio 95 ci,The ninety-five percent confidence range in which the true log odds ratio for the sample population falls.
+dataset count,total sample size,The total number of patients or participants within a sample population.
+association slot,mechanism of action,a boolean flag to indicate if the edge is part of a path or subgraph of a knowledge graph that constitutes the mechanism of action for a result.
+association slot,knowledge source,An Information Resource from which the knowledge expressed in an Association was retrieved  directly or indirectly. This can be any resource through which the knowledge passed on its way to its currently serialized form. In practice  implementers should use one of the more specific subtypes of this generic property.
+node property,provided by,The value in this node property represents the knowledge provider that created or assembled the node and all of its attributes.  Used internally to represent how a particular node made its way into a knowledge provider or graph.
+knowledge source,primary knowledge source,"The most upstream source of the knowledge expressed in an Association that an implementer can identify.  Performing a rigorous analysis of upstream data providers is expected; every effort is made to catalog the most upstream source of data in this property.  Only one data source should be declared primary in any association.  ""aggregator knowledge source"" can be used to capture non-primary sources."
+knowledge source,aggregator knowledge source,An intermediate aggregator resource from which knowledge expressed in an Association was retrieved downstream of the original source  on its path to its current serialized form.
+association slot,supporting data source,An Information Resource from which data was retrieved and subsequently used as evidence to generate the knowledge expressed in an Association (e.g. through computation on  reasoning or inference over the retrieved data).
+association slot,supporting data set,A set of data used as evidence to generate the knowledge expressed in an Association (e.g. through computation on  reasoning or inference over the retrieved data).
+association slot,chi squared statistic,represents the chi-squared statistic computed from observations
+association slot,unadjusted p value,A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained  assuming that the actual value was the result of chance alone.
+association slot,p value,A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained  assuming that the actual value was the result of chance alone.
+association slot,evidence count,The number of evidence instances that are connected to an association.
+association slot,dataset count,The total number of instances (e.g.  number of patients  number of rows  etc) in a dataset/cohort.
+association slot,concept count subject,The number of instances in a dataset/cohort whose records contain the concept in the subject slot of an association.
+association slot,concept count object,The number of instances in a dataset/cohort whose records contain the concept in the object slot of an association.
+association slot,concept pair count,The number of instances in a dataset/cohort whose records contain both the subject and object concept of an association.
+association slot,expected count,The expected (calculated) number of instances in a dataset/cohort whose records contain both the subject and  object concept of an association if the subject and object concepts are independent.
+association slot,relative frequency subject,The frequency at which subject and object concepts co-occur in  records within a dataset/cohort  relative to the frequency at which the subject concept appears in these same records.
+association slot,relative frequency object,The frequency at which subject and object concepts co-occur in  records within a dataset/cohort  relative to the frequency at which the object concept appears in these same records.
+association slot,relative frequency subject confidence interval,The 99% confidence interval for the relative_frequency_subject calculation (i.e. the range of values within which the true value has a 99% chance of falling)
+association slot,relative frequency object confidence interval,The 99% confidence interval for the relative_frequency_object calculation (i.e. the range of values within which the true value has a 99% chance of falling)
+p value,adjusted p value,The adjusted p-value is the probability of obtaining test results at least as extreme as the results actually observed  under the assumption that the null hypothesis is correct  adjusted for multiple comparisons.   P is always italicized and capitalized. The actual P value* should be expressed (P=. 04)  rather than expressing a statement of inequality (P<. 05)  unless P<.
+adjusted p value,bonferonni adjusted p value,The Bonferroni correction is an adjustment made to P values when several dependent or independent  statistical tests are being performed simultaneously on a single data set. To perform a Bonferroni  correction  divide the critical P value (α) by the number of comparisons being made.  P is always italicized and  capitalized. The actual P value* should be expressed (P=. 04) rather than expressing a statement of inequality  (P<. 05)  unless P<.
+association slot,supporting text,The segment of text from a document that supports the mined assertion.
+association slot,supporting documents,One or more referenceable documents that report the statement expressed in an Association  or provide  information used as evidence supporting this statement.
+association slot,subject location in text,Character offsets for the text span(s) in the supporting text corresponding to the subject concept of the extracted assertion.
+association slot,object location in text,Character offsets for the text span(s) in the supporting text corresponding to the object concept of the extracted assertion
+association slot,extraction confidence score,A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained  assuming that the actual value was the result of chance alone.
+association slot,supporting document type,The document type (e.g.  Journal Article  Case Study  Preprint) for the supporting document used in a Text Mining Result.
+association slot,supporting document year,The document year (typically the publication year) for the supporting document used in a Text Mining Result.
+association slot,supporting text section type,The section of the supporting text of a Text Mining Result within the supporting document. This is in the form of the name of the document section (e.g.  Abstract  Introduction) that contains the supporting text.
+association slot,ln ratio,the natural log of the ratio of co-occurrence to expected
+association slot,ln ratio confidence interval,The 99% confidence interval for the ln_ratio calculation (i.e. the range of values within which the true value has a 99% chance of falling)
+association slot,interacting molecules category, 
+association slot,expression site,location in which gene or protein expression takes place. May be cell  tissue  or organ.
+association slot,phenotypic state,in experiments (e.g. gene expression) assaying diseased or unhealthy tissue  the phenotypic state can be put here  e.g. MONDO ID. For healthy tissues  use XXX.
+association slot,supporting publications,One or more publications that report the statement expressed in an  Association  or provide information used as evidence supporting this statement.
+association slot,supporting documents,One or more publications that report the statement expressed in an  Association  or provide information used as evidence supporting this statement.
+association slot,publications,One or more publications that report the statement expressed in an  Association  or provide information used as evidence supporting this statement.
+association slot,associated environmental context,An attribute that can be applied to an association where the association holds between two entities located or occurring in a particular environment. For example  two microbial taxa may interact in the context of a human gut; a disease may give rise to a particular phenotype in a particular environmental exposure.  # TODO: add examples of values for this property.
+association slot,sequence localization attribute,An attribute that can be applied to a genome sequence localization edge. These edges connect a nucleic acid entity such as an exon to an entity such as a chromosome. Edge properties are used to ascribe specific positional information and other metadata to the localization. In pragmatic terms this can be thought of as columns in a GFF3 line.
+sequence localization attribute,zero-based,A position in interbase coordinates. Interbase coordinates start at position 0 instead of position 1. This is applied to a sequence localization edge.
+sequence localization attribute,half-open,A position in interbase coordinates. Interbase coordinates start at position 0 instead of position 1. This is applied to a sequence localization edge.
+sequence localization attribute,space-based,A position in interbase coordinates. Interbase coordinates start at position 0 instead of position 1. This is applied to a sequence localization edge.
+sequence localization attribute,interbase coordinate,A position in interbase coordinates. Interbase coordinates start at position 0 instead of position 1. This is applied to a sequence localization edge.
+interbase coordinate,start interbase coordinate,The position at which the subject nucleic acid entity starts on the chromosome or other entity to which it is located on. (ie: the start of the sequence being referenced is 0).
+interbase coordinate,end interbase coordinate,The position at which the subject nucleic acid entity ends on the chromosome or other entity to which it is located on.
+base coordinate,start,The position at which the subject genomic entity starts on the chromosome or other entity to which it is located on. (ie: the start of the sequence being referenced is 1).
+base coordinate,start coordinate,The position at which the subject genomic entity starts on the chromosome or other entity to which it is located on. (ie: the start of the sequence being referenced is 1).
+base coordinate,end,The position at which the subject genomic entity ends on the chromosome or other entity to which it is located on.
+base coordinate,end coordinate,The position at which the subject genomic entity ends on the chromosome or other entity to which it is located on.
+sequence localization attribute,genome build,The version of the genome on which a feature is located. For example  GRCh38 for Homo sapiens.
+sequence localization attribute,strand,The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+sequence localization attribute,phase,The phase for a coding sequence entity. For example  phase of a CDS as represented in a GFF3 with a value of 0  1 or 2.
+association slot,FDA approval status,
+association slot,supporting study metadata,Information about a study used to generate information used as evidence to support the knowledge expressed in an  Association. In practice  data creators should use one of the more specific subtypes of this property.
+supporting study metadata,supporting study method type,A type of method that was applied in a study used to generate the information used as evidence (e.g. a type of  experimental assay  or statistical calculation  or computational analysis).
+supporting study metadata,supporting study method description,A uri or curie pointing to information about the methodology used to generate data supporting an Association.
+supporting study metadata,supporting study size,The sample size used in a study that provided evidence for the association (e.g. 'n' of a cohort for a  clinical study).
+supporting study metadata,supporting study cohort,A description of a study population/cohort that was interrogated to provide evidence for the association  (e.g. the inclusion and exclusion criteria).
+supporting study metadata,supporting study date range,The date range over which data was collected in a study that provided evidence for an Association.
+supporting study metadata,supporting study context,A term or terms describing the experimental setting/context in which evidence supporting the Association was  generated ('context' may be defined by many factors  including taxon  model system (e.g. cell line type)  tissue  type  disease  etc.).
+ ,mapping collection,A collection of deprecated mappings.
+ ,predicate mapping,A deprecated predicate mapping object contains the deprecated predicate and an example of the rewiring that should be done to use a qualified statement in its place.
+ ,ontology class,a concept or class in an ontology  vocabulary or thesaurus. Note that nodes in a biolink compatible KG can be considered both instances of biolink classes  and OWL classes in their own right. In general you should not need to use this class directly. Instead  use the appropriate biolink class. For example  for the GO concept of endocytosis (GO:0006897)  use bl:BiologicalProcess as the type.
+ ,annotation,Biolink Model root class for entity annotations.
+annotation,quantity value,A value of an attribute that is quantitative and measurable  expressed as a combination of a unit and a numeric value
+named thing,attribute,A property or characteristic of an entity. For example  an apple may have properties such as color  shape  age  crispiness. An environmental sample may have attributes such as depth  lat  long  material.
+attribute,chemical role,	A role played by the molecular entity or part thereof within a chemical context.
+attribute,biological sex, 
+biological sex,phenotypic sex,An attribute corresponding to the phenotypic sex of the individual  based upon the reproductive organs present.
+biological sex,genotypic sex,An attribute corresponding to the genotypic sex of the individual  based upon genotypic composition of sex chromosomes.
+attribute,severity value,describes the severity of a phenotypic feature or disease
+ ,relationship quantifier, 
+relationship quantifier,sensitivity quantifier, 
+relationship quantifier,specificity quantifier, 
+specificity quantifier,pathognomonicity quantifier,A relationship quantifier between a variant or symptom and a disease  which is high when the presence of the feature implies the existence of the disease
+relationship quantifier,frequency quantifier, 
+ ,chemical or drug or treatment, 
+ ,entity,Root Biolink Model class for all things and informational relationships  real or imagined.
+entity,named thing,a databased entity or concept/class
+ontology class,relationship type,An OWL property used as an edge label
+ontology class,taxonomic rank,A descriptor for the rank within a taxonomic classification. Example instance: TAXRANK:0000017 (kingdom)
+named thing,taxon,A classification of a set of organisms. Example instances: NCBITaxon:9606 (Homo sapiens)  NCBITaxon:2 (Bacteria). Can also be used to represent strains or subspecies.
+named thing,taxonomic classification,A classification of a set of organisms. Example instances: NCBITaxon:9606 (Homo sapiens)  NCBITaxon:2 (Bacteria). Can also be used to represent strains or subspecies.
+named thing,organism taxon,A classification of a set of organisms. Example instances: NCBITaxon:9606 (Homo sapiens)  NCBITaxon:2 (Bacteria). Can also be used to represent strains or subspecies.
+named thing,event,Something that happens at a given place and time.
+named thing,administrative entity, 
+information content entity,study result,A collection of data items from a study that are about a particular study subject or experimental unit (the  'focus' of the Result) - optionally with context/provenance metadata that may be relevant to the interpretation of this data as evidence.
+activity,study,a detailed investigation and/or analysis
+information content entity,study variable,a variable that is used as a measure in the investigation of a study
+information content entity,common data element,A Common Data Element (CDE) is a standardized  precisely defined question  paired with a set of allowable  responses  used systematically across different sites  studies  or clinical trials to ensure consistent  data collection. Multiple CDEs (from one or more Collections) can be curated into Forms.  (https://cde.nlm.nih.gov/home)
+study result,concept count analysis result,A result of a concept count analysis.
+study result,observed expected frequency analysis result,A result of a observed expected frequency analysis.
+study result,relative frequency analysis result,A result of a relative frequency analysis.
+study result,text mining result,A result of text mining.
+study result,chi squared analysis result,A result of a chi squared analysis.
+study result,log odds analysis result,A result of a log odds ratio analysis.
+administrative entity,group,person  group  organization or project that provides a piece of information (i.e. a knowledge association)
+administrative entity,agent,person  group  organization or project that provides a piece of information (i.e. a knowledge association)
+named thing,information,a piece of information that typically describes some topic of discourse or is used as support.
+named thing,information artefact,a piece of information that typically describes some topic of discourse or is used as support.
+named thing,information entity,a piece of information that typically describes some topic of discourse or is used as support.
+named thing,information content entity,a piece of information that typically describes some topic of discourse or is used as support.
+information content entity,dataset,an item that refers to a collection of data from a data source.
+information content entity,dataset distribution,an item that holds distribution level information about a dataset.
+information content entity,dataset version,an item that holds version level information about a dataset.
+information content entity,dataset summary,an item that holds summary level information about a dataset.
+information content entity,confidence level,Level of confidence in a statement
+information content entity,evidence code,Class of evidence that supports an association
+information content entity,evidence type,Class of evidence that supports an association
+information content entity,publication,Any ‘published’ piece of information. Publications are considered broadly  to include any document or document part made available in print or on the  web - which may include scientific journal issues  individual articles  and  books - as well as things like pre-prints  white papers  patents  drug  labels  web pages  protocol documents   and even a part of a publication if  of significant knowledge scope (e.g. a figure  figure legend  or section  highlighted by NLP). 
+publication,book,This class may rarely be instantiated except if use cases of a given knowledge graph support its utility.
+publication,book chapter, 
+publication,journal,This class may rarely be instantiated except if use cases of a given knowledge graph support its utility.
+publication,serial,This class may rarely be instantiated except if use cases of a given knowledge graph support its utility.
+publication,article,a piece of writing on a particular topic presented as a stand-alone  section of a larger publication	  
+article,journal article,an article  typically presenting results of research  that is published  in an issue of a scientific journal.
+publication,patent,a legal document granted by a patent issuing authority which confers upon  the patenter the sole right to make  use and sell an invention for a set period of time. 
+publication,web page,a document that is published according to World Wide Web standards  which  may incorporate text  graphics  sound  and/or other features.
+publication,preprint publication,a document reresenting an early version of an author's original scholarly work   such as a research paper or a review  prior to formal peer review and publication  in a peer-reviewed scholarly or scientific journal.
+publication,drug label,a document accompanying a drug or its container that provides written  printed or graphic information about the drug  including drug contents  specific instructions  or warnings for administration  storage and disposal instructions  etc. 
+information content entity,retrieval source,Provides information about how a particular InformationResource served as a source from which knowledge expressed in an Edge  or data used to generate this knowledge  was retrieved.
+ ,physical essence or occurrent,Either a physical or processual entity.
+physical essence or occurrent,physical essence,Semantic mixin concept.  Pertains to entities that have physical properties such as mass  volume  or charge.
+named thing,physical entity,An entity that has material reality (a.k.a. physical essence).
+physical essence or occurrent,occurrent,A processual entity.
+occurrent,activity and behavior,Activity or behavior of any independent integral living  organization or mechanical actor in the world
+named thing,activity,An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming  processing  transforming  modifying  relocating  using  or generating entities.
+named thing,procedure,A series of actions conducted in a certain order or manner
+named thing,phenomenon,a fact or situation that is observed to exist or happen  especially one whose cause or explanation is in question
+named thing,device,A thing made or adapted for a particular purpose  especially a piece of mechanical or electronic equipment
+named thing,diagnostic aid,A device or substance used to help diagnose disease or injury
+population of individual organisms,study population,A group of people banded together or treated as a group as participants in a research study.
+ ,subject of investigation,An entity that has the role of being studied in an investigation  study  or experiment
+physical entity,biospecimen,A sample is a limited quantity of something (e.g. an individual or set of individuals from a population  or a portion of a substance) to be used for testing  analysis  inspection  investigation  demonstration  or trial use. [SIO]
+physical entity,sample,A sample is a limited quantity of something (e.g. an individual or set of individuals from a population  or a portion of a substance) to be used for testing  analysis  inspection  investigation  demonstration  or trial use. [SIO]
+physical entity,biosample,A sample is a limited quantity of something (e.g. an individual or set of individuals from a population  or a portion of a substance) to be used for testing  analysis  inspection  investigation  demonstration  or trial use. [SIO]
+physical entity,physical sample,A sample is a limited quantity of something (e.g. an individual or set of individuals from a population  or a portion of a substance) to be used for testing  analysis  inspection  investigation  demonstration  or trial use. [SIO]
+physical entity,material sample,A sample is a limited quantity of something (e.g. an individual or set of individuals from a population  or a portion of a substance) to be used for testing  analysis  inspection  investigation  demonstration  or trial use. [SIO]
+named thing,planetary entity,Any entity or process that exists at the level of the whole planet
+planetary entity,environmental process, 
+planetary entity,environmental feature, 
+planetary entity,geographic location,a location that can be described in lat/long coordinates
+geographic location,geographic location at time,a location that can be described in lat/long coordinates  for a particular time
+ ,thing with taxon,A mixin that can be used on any entity that can be taxonomically classified. This includes individual organisms; genes  their products and other molecular entities; body parts; biological processes
+named thing,bioentity, 
+named thing,biological entity, 
+ ,genomic entity, 
+ ,epigenomic entity, 
+chemical entity,molecular entity,A molecular entity is a chemical entity composed of individual or covalently bonded atoms.
+named thing,chemical entity,A chemical entity is a physical entity that pertains to chemistry or biochemistry.
+molecular entity,chemical substance,A small molecule entity is a molecular entity characterized by availability in small-molecule databases of SMILES  InChI  IUPAC  or other unambiguous representation of its precise chemical structure; for convenience of representation  any valid chemical representation is included  even if it is not strictly molecular (e.g.  sodium ion).
+molecular entity,small molecule,A small molecule entity is a molecular entity characterized by availability in small-molecule databases of SMILES  InChI  IUPAC  or other unambiguous representation of its precise chemical structure; for convenience of representation  any valid chemical representation is included  even if it is not strictly molecular (e.g.  sodium ion).
+chemical entity,chemical mixture,A chemical mixture is a chemical entity composed of two or more molecular entities.
+molecular entity,sequence feature,A nucleic acid entity is a molecular entity characterized by availability in gene databases of nucleotide-based sequence representations of its precise sequence; for convenience of representation  partial sequences of various kinds are included.
+molecular entity,genomic entity,A nucleic acid entity is a molecular entity characterized by availability in gene databases of nucleotide-based sequence representations of its precise sequence; for convenience of representation  partial sequences of various kinds are included.
+molecular entity,nucleic acid entity,A nucleic acid entity is a molecular entity characterized by availability in gene databases of nucleotide-based sequence representations of its precise sequence; for convenience of representation  partial sequences of various kinds are included.
+biological entity,regulatory element,A region (or regions) of the genome that contains known or putative regulatory elements that act in cis- or trans- to affect the transcription of gene
+biological entity,regulatory region,A region (or regions) of the genome that contains known or putative regulatory elements that act in cis- or trans- to affect the transcription of gene
+regulatory region,dnase-seq accessible region,A region (or regions) of a chromatinized genome that has been measured to be more accessible to an enzyme such as DNase-I or Tn5 Transpose
+regulatory region,atac-seq accessible region,A region (or regions) of a chromatinized genome that has been measured to be more accessible to an enzyme such as DNase-I or Tn5 Transpose
+regulatory region,accessible dna region,A region (or regions) of a chromatinized genome that has been measured to be more accessible to an enzyme such as DNase-I or Tn5 Transpose
+regulatory region,tf binding site,A region (or regions) of the genome that contains a region of DNA known or predicted to bind a protein that modulates gene transcription
+regulatory region,binding site,A region (or regions) of the genome that contains a region of DNA known or predicted to bind a protein that modulates gene transcription
+regulatory region,transcription factor binding site,A region (or regions) of the genome that contains a region of DNA known or predicted to bind a protein that modulates gene transcription
+chemical mixture,molecular mixture,A molecular mixture is a chemical mixture composed of two or more molecular entities with known concentration and stoichiometry.
+chemical mixture,complex molecular mixture,A complex molecular mixture is a chemical mixture composed of two or more molecular entities with unknown concentration and stoichiometry.
+biological entity,biological process or activity,Either an individual molecular activity  or a collection of causally connected molecular activities in a biological system.
+biological process or activity,molecular function,An execution of a molecular function carried out by a gene product or macromolecular complex.
+biological process or activity,molecular event,An execution of a molecular function carried out by a gene product or macromolecular complex.
+biological process or activity,reaction,An execution of a molecular function carried out by a gene product or macromolecular complex.
+biological process or activity,molecular activity,An execution of a molecular function carried out by a gene product or macromolecular complex.
+biological process or activity,biological process,One or more causally connected executions of molecular functions
+biological process,pathway, 
+biological process,physiology, 
+biological process,physiological process, 
+biological process,behavior, 
+chemical mixture,processed material,A chemical entity (often a mixture) processed for consumption for nutritional  medical or technical use. Is a material entity that is created or changed during material processing.
+molecular mixture,drug,A substance intended for use in the diagnosis  cure  mitigation  treatment  or prevention of disease
+chemical entity,environmental food contaminant, 
+chemical entity,food additive, 
+chemical mixture,food,A substance consumed by a living organism as a source of nutrition
+attribute,organism attribute,describes a characteristic of an organismal entity.
+organism attribute,phenotypic properties,A property of a phenotype
+organism attribute,phenotypic quality,A property of a phenotype
+biological entity,inheritance,The pattern or 'mode' in which a particular genetic trait or disorder is passed from one generation to the next  e.g. autosomal dominant  autosomal recessive  etc.
+biological entity,genetic inheritance,The pattern or 'mode' in which a particular genetic trait or disorder is passed from one generation to the next  e.g. autosomal dominant  autosomal recessive  etc.
+biological entity,organismal entity,A named entity that is either a part of an organism  a whole organism  population or clade of organisms  excluding chemical entities
+organismal entity,bacterium,A member of a group of unicellular microorganisms lacking a nuclear membrane  that reproduce by binary fission and are often motile.
+organismal entity,virus,A virus is a microorganism that replicates itself as a microRNA and infects the host cell.
+organismal entity,cellular organism,
+cellular organism,mammal,A member of the class Mammalia  a clade of endothermic amniotes distinguished from reptiles and birds by the possession of hair  three middle ear bones  mammary glands  and a neocortex
+mammal,human,A member of the the species Homo sapiens.
+cellular organism,plant,
+cellular organism,invertebrate,An animal lacking a vertebral column. This group consists of 98% of all animal species.
+cellular organism,vertebrate,A sub-phylum of animals consisting of those having a bony or cartilaginous vertebral column.
+cellular organism,fungus,A kingdom of eukaryotic  heterotrophic organisms that live as saprobes or parasites   including mushrooms  yeasts  smuts  molds  etc. They reproduce either sexually or asexually  and have life cycles that range from simple to complex. Filamentous  fungi refer to those that grow as multicellular colonies (mushrooms and molds).
+organismal entity,life stage,A stage of development or growth of an organism  including post-natal adult stages
+organismal entity,organism,An instance of an organism. For example  Richard Nixon  Charles Darwin  my pet cat. Example ID: ORCID:0000-0002-5355-2576
+organismal entity,individual organism,An instance of an organism. For example  Richard Nixon  Charles Darwin  my pet cat. Example ID: ORCID:0000-0002-5355-2576
+organismal entity,population of individual organisms,A collection of individuals from the same taxonomic class distinguished by one or more characteristics.  Characteristics can include  but are not limited to  shared geographic location  genetics  phenotypes.
+biological entity,phenome,Either one of a disease or an individual phenotypic feature. Some knowledge resources such as Monarch treat these as distinct  others such as MESH conflate.  Please see definitions of phenotypic feature and disease in this model for their independent descriptions.  This class is helpful to enforce domains and ranges   that may involve either a disease or a phenotypic feature.
+biological entity,disease or phenotypic feature,Either one of a disease or an individual phenotypic feature. Some knowledge resources such as Monarch treat these as distinct  others such as MESH conflate.  Please see definitions of phenotypic feature and disease in this model for their independent descriptions.  This class is helpful to enforce domains and ranges   that may involve either a disease or a phenotypic feature.
+disease or phenotypic feature,condition,A disorder of structure or function  especially one that produces specific  signs  phenotypes or symptoms or that affects a specific location and is not simply a  direct result of physical injury.  A disposition to undergo pathological processes that exists in an  organism because of one or more disorders in that organism.
+disease or phenotypic feature,disorder,A disorder of structure or function  especially one that produces specific  signs  phenotypes or symptoms or that affects a specific location and is not simply a  direct result of physical injury.  A disposition to undergo pathological processes that exists in an  organism because of one or more disorders in that organism.
+disease or phenotypic feature,medical condition,A disorder of structure or function  especially one that produces specific  signs  phenotypes or symptoms or that affects a specific location and is not simply a  direct result of physical injury.  A disposition to undergo pathological processes that exists in an  organism because of one or more disorders in that organism.
+disease or phenotypic feature,disease,A disorder of structure or function  especially one that produces specific  signs  phenotypes or symptoms or that affects a specific location and is not simply a  direct result of physical injury.  A disposition to undergo pathological processes that exists in an  organism because of one or more disorders in that organism.
+disease or phenotypic feature,sign,A combination of entity and quality that makes up a phenotyping statement. An observable characteristic of an  individual resulting from the interaction of its genotype with its molecular and physical environment.
+disease or phenotypic feature,symptom,A combination of entity and quality that makes up a phenotyping statement. An observable characteristic of an  individual resulting from the interaction of its genotype with its molecular and physical environment.
+disease or phenotypic feature,phenotype,A combination of entity and quality that makes up a phenotyping statement. An observable characteristic of an  individual resulting from the interaction of its genotype with its molecular and physical environment.
+disease or phenotypic feature,trait,A combination of entity and quality that makes up a phenotyping statement. An observable characteristic of an  individual resulting from the interaction of its genotype with its molecular and physical environment.
+disease or phenotypic feature,endophenotype,A combination of entity and quality that makes up a phenotyping statement. An observable characteristic of an  individual resulting from the interaction of its genotype with its molecular and physical environment.
+disease or phenotypic feature,phenotypic feature,A combination of entity and quality that makes up a phenotyping statement. An observable characteristic of an  individual resulting from the interaction of its genotype with its molecular and physical environment.
+phenotypic feature,behavioral feature,A phenotypic feature which is behavioral in nature.
+organismal entity,anatomical entity,A subcellular location  cell type or gross anatomical part
+anatomical entity,cell component,A location in or around a cell
+anatomical entity,cell part,A location in or around a cell
+anatomical entity,cellular component,A location in or around a cell
+anatomical entity,cell, 
+organismal entity,cell line, 
+anatomical entity,tissue, 
+anatomical entity,organ, 
+anatomical entity,gross anatomical structure, 
+ ,chemical entity or gene or gene product,A union of chemical entities and children  and gene or gene product. This mixin is helpful to use when searching across chemical entities that must include genes and their children as chemical entities.
+ ,chemical entity or protein or polypeptide,A union of chemical entities and children  and protein and polypeptide. This mixin is helpful to use when searching across chemical entities that must include genes and their children as chemical entities.
+ ,macromolecular machine mixin,A union of gene locus  gene product  and macromolecular complex. These are the basic units of function in a cell. They either carry out individual biological activities  or they encode molecules which do this.
+macromolecular machine mixin,gene or gene product,A union of gene loci or gene products. Frequently an identifier for one will be used as proxy for another
+biological entity,gene,A region (or regions) that includes all of the sequence elements necessary to encode a functional transcript. A gene locus may include regulatory regions  transcribed regions and/or other functional sequence regions.
+gene or gene product,gene product mixin,The functional molecular product of a single gene locus. Gene products are either proteins or functional RNA molecules.
+gene product mixin,gene product isoform mixin,This is an abstract class that can be mixed in with different kinds of gene products to indicate that the gene product is intended to represent a specific isoform rather than a canonical or reference or generic product. The designation of canonical or reference may be arbitrary  or it may represent the superclass of all isoforms.
+biological entity,macromolecular complex,A stable assembly of two or more macromolecules  i.e. proteins  nucleic acids  carbohydrates or lipids  in which at least one component is a protein and the constituent parts function together.
+biological entity,nucleosome modification,A chemical modification of a histone protein within a nucleosome octomer or a substitution of a histone with a variant histone isoform. e.g. Histone 4 Lysine 20 methylation (H4K20me)  histone variant H2AZ substituting H2A.
+biological entity,genome,A genome is the sum of genetic material within a cell or virion.
+nucleic acid entity,exon,A region of the transcript sequence within a gene which is not removed from the primary RNA transcript by RNA splicing.
+nucleic acid entity,transcript,An RNA synthesized on a DNA or RNA template by an RNA polymerase.
+nucleic acid entity,coding sequence, 
+biological entity,amino acid entity,A polypeptide is a molecular entity characterized by availability in protein databases of amino-acid-based sequence representations of its precise primary structure; for convenience of representation  partial sequences of various kinds are included  even if they do not represent a physical molecule.
+biological entity,polypeptide,A polypeptide is a molecular entity characterized by availability in protein databases of amino-acid-based sequence representations of its precise primary structure; for convenience of representation  partial sequences of various kinds are included  even if they do not represent a physical molecule.
+polypeptide,protein,A gene product that is composed of a chain of amino acid sequences and is produced by ribosome-mediated translation of mRNA
+protein,proteoform,Represents a protein that is a specific isoform of the canonical or reference protein. See https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4114032/
+protein,protein isoform,Represents a protein that is a specific isoform of the canonical or reference protein. See https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4114032/
+biological entity,protein domain,A conserved part of protein sequence and (tertiary) structure that can evolve  function  and exist independently of the rest of the protein chain. Protein domains maintain their structure and function independently of the proteins in which they are found. e.g. an SH3 domain.
+biological entity,posttranslational modification,A chemical modification of a polypeptide or protein that occurs after translation.  e.g. polypeptide cleavage to form separate proteins  methylation or acetylation of histone tail amino acids   protein ubiquitination.
+biological entity,protein family, 
+biological entity,consensus sequence,A linear nucleotide sequence pattern that is widespread and has  or is conjectured to have  a biological significance. e.g. the TATA box promoter motif  transcription factor binding consensus sequences.
+biological entity,nucleic acid sequence motif,A linear nucleotide sequence pattern that is widespread and has  or is conjectured to have  a biological significance. e.g. the TATA box promoter motif  transcription factor binding consensus sequences.
+transcript,RNA product, 
+RNA product,RNA product isoform,Represents a protein that is a specific isoform of the canonical or reference RNA
+RNA product,noncoding RNA product, 
+noncoding RNA product,microRNA, 
+noncoding RNA product,small interfering RNA,A small RNA molecule that is the product of a longer exogenous or endogenous dsRNA  which is either a bimolecular duplex or very long hairpin  processed (via the Dicer pathway) such that numerous siRNAs accumulate from both strands of the dsRNA. SRNAs trigger the cleavage of their target molecules.
+noncoding RNA product,RNAi,A small RNA molecule that is the product of a longer exogenous or endogenous dsRNA  which is either a bimolecular duplex or very long hairpin  processed (via the Dicer pathway) such that numerous siRNAs accumulate from both strands of the dsRNA. SRNAs trigger the cleavage of their target molecules.
+noncoding RNA product,siRNA,A small RNA molecule that is the product of a longer exogenous or endogenous dsRNA  which is either a bimolecular duplex or very long hairpin  processed (via the Dicer pathway) such that numerous siRNAs accumulate from both strands of the dsRNA. SRNAs trigger the cleavage of their target molecules.
+ ,gene grouping mixin,any grouping of multiple genes or gene products
+biological entity,orthogroup,any grouping of multiple genes or gene products related by common descent
+biological entity,protein family,any grouping of multiple genes or gene products related by common descent
+biological entity,gene family,any grouping of multiple genes or gene products related by common descent
+attribute,zygosity, 
+biological entity,genotype,An information content entity that describes a genome by specifying the total variation in genomic sequence and/or gene expression  relative to some established background
+biological entity,haplotype,A set of zero or more Alleles on a single instance of a Sequence[VMC]
+biological entity,allele,A sequence_variant is a non exact copy of a sequence_feature or genome exhibiting one or more sequence_alteration.
+biological entity,sequence variant,A sequence_variant is a non exact copy of a sequence_feature or genome exhibiting one or more sequence_alteration.
+sequence variant,single nucleotide variant,SNVs are single nucleotide positions in genomic DNA at which different sequence alternatives exist
+sequence variant,single nucleotide polymorphism,SNVs are single nucleotide positions in genomic DNA at which different sequence alternatives exist
+sequence variant,snp,SNVs are single nucleotide positions in genomic DNA at which different sequence alternatives exist
+sequence variant,snv,SNVs are single nucleotide positions in genomic DNA at which different sequence alternatives exist
+biological entity,sequence targeting reagent,A gene altered in its expression level in the context of some experiment as a result of being targeted by gene-knockdown reagent(s) such as a morpholino or RNAi.
+biological entity,reagent targeted gene,A gene altered in its expression level in the context of some experiment as a result of being targeted by gene-knockdown reagent(s) such as a morpholino or RNAi.
+attribute,clinical attribute,Attributes relating to a clinical manifestation
+clinical attribute,clinical measurement,A clinical measurement is a special kind of attribute which results from a laboratory observation from a subject individual or sample. Measurements can be connected to their subject by the 'has attribute' slot.
+clinical attribute,clinical modifier,Used to characterize and specify the phenotypic abnormalities defined in the phenotypic abnormality sub-ontology  with respect to severity  laterality  and other aspects
+clinical attribute,clinical course,The course a disease typically takes from its onset  progression in time  and eventual resolution or death of the affected individual
+clinical course,onset,The age group in which (disease) symptom manifestations appear
+named thing,clinical entity,Any entity or process that exists in the clinical domain and outside the biological realm. Diseases are placed under biological entities
+clinical entity,clinical trial, 
+clinical entity,clinical intervention, 
+phenotypic feature,clinical finding,this category is currently considered broad enough to tag clinical lab measurements and other biological attributes taken as 'clinical traits' with some statistical score  for example  a p value in genetic associations.
+clinical intervention,hospitalization, 
+attribute,socioeconomic attribute,Attributes relating to a socioeconomic manifestation
+individual organism,patient,An individual (human) organism that has a patient role in some clinical context.
+individual organism,proband,An individual (human) organism that has a patient role in some clinical context.
+individual organism,case,An individual (human) organism that has a patient role in some clinical context.
+study population,cohort,A group of people banded together or treated as a group who share common characteristics. A cohort 'study' is a particular form of longitudinal study that samples a cohort  performing a cross-section at intervals through time.
+ontology class,exposure,A (possibly time bounded) incidence of a feature of the environment of an organism that influences one or more phenotypic features of that organism  potentially mediated by genes
+ontology class,experimental condition,A (possibly time bounded) incidence of a feature of the environment of an organism that influences one or more phenotypic features of that organism  potentially mediated by genes
+ontology class,exposure event,A (possibly time bounded) incidence of a feature of the environment of an organism that influences one or more phenotypic features of that organism  potentially mediated by genes
+attribute,genomic background exposure,A genomic background exposure is where an individual's specific genomic background of genes  sequence variants or other pre-existing genomic conditions constitute a kind of 'exposure' to the organism  leading to or influencing an outcome.
+ ,pathological entity mixin,A pathological (abnormal) structure or process.
+biological process,pathological process,A biologic function or a process having an abnormal or deleterious effect at the subcellular  cellular  multicellular  or organismal level.
+attribute,pathological process exposure,A pathological process  when viewed as an exposure  representing a precondition  leading to or influencing an outcome  e.g. autoimmunity leading to disease.
+anatomical entity,pathological anatomical structure,An anatomical structure with the potential of have an abnormal or deleterious effect at the subcellular  cellular  multicellular  or organismal level.
+attribute,pathological anatomical exposure,An abnormal anatomical structure  when viewed as an exposure  representing an precondition  leading to or influencing an outcome  e.g. thrombosis leading to an ischemic disease outcome.
+attribute,disease or phenotypic feature exposure,A disease or phenotypic feature state  when viewed as an exposure  represents an precondition  leading to or influencing an outcome  e.g. HIV predisposing an individual to infections; a relative deficiency of skin pigmentation predisposing an individual to skin cancer.
+attribute,chemical exposure,A chemical exposure is an intake of a particular chemical entity.
+attribute,complex chemical exposure,A complex chemical exposure is an intake of a chemical mixture (e.g. gasoline)  other than a drug.
+chemical exposure,drug intake,A drug exposure is an intake of a particular drug.
+chemical exposure,drug dose,A drug exposure is an intake of a particular drug.
+chemical exposure,medication intake,A drug exposure is an intake of a particular drug.
+chemical exposure,drug exposure,A drug exposure is an intake of a particular drug.
+drug exposure,drug to gene interaction exposure,drug to gene interaction exposure is a drug exposure is where the interactions of the drug with specific genes are known to constitute an 'exposure' to the organism  leading to or influencing an outcome.
+named thing,medical action,A treatment is targeted at a disease or phenotype and may involve multiple drug 'exposures'  medical devices and/or procedures
+named thing,medical intervention,A treatment is targeted at a disease or phenotype and may involve multiple drug 'exposures'  medical devices and/or procedures
+named thing,treatment,A treatment is targeted at a disease or phenotype and may involve multiple drug 'exposures'  medical devices and/or procedures
+attribute,viral exposure,An external biotic exposure is an intake of (sometimes pathological) biological organisms (including viruses).
+attribute,bacterial exposure,An external biotic exposure is an intake of (sometimes pathological) biological organisms (including viruses).
+attribute,biotic exposure,An external biotic exposure is an intake of (sometimes pathological) biological organisms (including viruses).
+environmental exposure,geographic exposure,A geographic exposure is a factor relating to geographic proximity to some impactful entity.
+attribute,environmental exposure,A environmental exposure is a factor relating to abiotic processes in the environment including sunlight (UV-B)  atmospheric (heat  cold  general pollution) and water-born contaminants.
+attribute,behavioral exposure,A behavioral exposure is a factor relating to behavior impacting an individual.
+attribute,socioeconomic exposure,A socioeconomic exposure is a factor relating to social and financial status of an affected individual (e.g. poverty).
+ ,outcome,An entity that has the role of being the consequence of an exposure event. This is an abstract mixin grouping of various categories of possible biological or non-biological (e.g. clinical) outcomes.
+ ,pathological process outcome,An outcome resulting from an exposure event which is the manifestation of a pathological process.
+ ,pathological anatomical outcome,An outcome resulting from an exposure event which is the manifestation of an abnormal anatomical structure.
+ ,disease or phenotypic feature outcome,Physiological outcomes resulting from an exposure event which is the manifestation of a disease or other characteristic phenotype.
+ ,behavioral outcome,An outcome resulting from an exposure event which is the manifestation of human behavior.
+ ,hospitalization outcome,An outcome resulting from an exposure event which is the increased manifestation of acute (e.g. emergency room visit) or chronic (inpatient) hospitalization.
+ ,mortality outcome,An outcome of death from resulting from an exposure event.
+ ,epidemiological outcome,An epidemiological outcome  such as societal disease burden  resulting from an exposure event.
+ ,socioeconomic outcome,An general social or economic outcome  such as healthcare costs  utilization  etc.  resulting from an exposure event
+entity,association,A typed association between two entities  supported by evidence
+association,chemical entity assesses named thing association, 
+association,contributor association,Any association between an entity (such as a publication) and various agents that contribute to its realisation
+association,genotype to genotype part association,Any association between one genotype and a genotypic entity that is a sub-component of it
+association,genotype to gene association,Any association between a genotype and a gene. The genotype have have multiple variants in that gene or a single one. There is no assumption of cardinality
+association,genotype to variant association,Any association between a genotype and a sequence variant.
+association,molecular or genetic interaction,abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.
+association,gene to gene association,abstract parent class for different kinds of gene-gene or gene product to gene product relationships. Includes homology and interaction.
+gene to gene association,gene to gene homology association,A homology association between two genes. May be orthology (in which case the species of subject and object should differ) or paralogy (in which case the species may be the same)
+association,gene to gene family association,Set membership of a gene in a family of genes related by common evolutionary ancestry usually inferred by sequence comparisons. The genes in a given family generally share common sequence motifs which generally map onto shared gene product structure-function relationships.
+ ,gene expression mixin,Observed gene expression intensity  context (site  stage) and associated phenotypic status within which the expression occurs.
+gene to gene association,gene to gene coexpression association,Indicates that two genes are co-expressed  generally under the same conditions.
+gene to gene association,pairwise gene to gene interaction,An interaction between two genes or two gene products. May be physical (e.g. protein binding) or genetic (between genes). May be symmetric (e.g. protein interaction) or directed (e.g. phosphorylation)
+pairwise gene to gene interaction,pairwise molecular interaction,An interaction at the molecular level between two physical entities
+ ,cell line to entity association mixin,An relationship between a cell line and another entity
+association,cell line to disease or phenotypic feature association,An relationship between a cell line and a disease or a phenotype  where the cell line is derived from an individual with that disease or phenotype.
+ ,chemical entity to entity association mixin,An interaction between a chemical entity and another entity
+chemical entity to entity association mixin,drug to entity association mixin,An interaction between a drug and another entity
+chemical entity to entity association mixin,chemical to entity association mixin,An interaction between a chemical entity and another entity
+ ,case to entity association mixin,An abstract association for use where the case is the subject
+association,chemical to chemical association,A relationship between two chemical entities. This can encompass actual interactions as well as temporal causal edges  e.g. one chemical converted to another.
+chemical to chemical association,reaction to participant association, 
+reaction to participant association,reaction to catalyst association, 
+chemical to chemical association,chemical to chemical derivation association,A causal relationship between two chemical entities  where the subject represents the upstream entity and the object represents the downstream. For any such association there is an implicit reaction:   IF   R has-input C1 AND   R has-output C2 AND   R enabled-by P AND   R type Reaction   THEN   C1 derives-into C2 <<catalyst qualifier P>>
+association,chemical to disease or phenotypic feature association,An interaction between a chemical entity and a phenotype or disease  where the presence of the chemical gives rise to or exacerbates the phenotype.
+association,chemical or drug or treatment to disease or phenotypic feature association,This association defines a relationship between a chemical or treatment (or procedure) and a disease or phenotypic feature where the disesae or phenotypic feature is a secondary undesirable effect.
+chemical or drug or treatment to disease or phenotypic feature association,chemical or drug or treatment side effect disease or phenotypic feature association,This association defines a relationship between a chemical or treatment (or procedure) and a disease or phenotypic feature where the disesae or phenotypic feature is a secondary  typically (but not always) undesirable effect.
+association,gene to pathway association,An interaction between a gene or gene product and a biological process or pathway.
+association,molecular activity to pathway association,Association that holds the relationship between a reaction and the pathway it participates in.
+association,chemical to pathway association,An interaction between a chemical entity and a biological process or pathway.
+association,named thing associated with likelihood of named thing association,
+association,chemical gene interaction association,describes a physical interaction between a chemical entity and a gene or gene product. Any biological or chemical effect resulting from such an interaction are out of scope  and covered by the ChemicalAffectsGeneAssociation type (e.g. impact of a chemical on the abundance  activity  structure  etc  of either participant in the interaction)
+association,chemical affects gene association,Describes an effect that a chemical has on a gene or gene product (e.g. an impact of on its abundance  activity  localization  processing  expression  etc.)
+association,drug to gene association,An interaction between a drug and a gene or gene product.
+ ,material sample to entity association mixin,An association between a material sample and something.
+association,material sample derivation association,An association between a material sample and the material entity from which it is derived.
+association,material sample to disease or phenotypic feature association,An association between a material sample and a disease or phenotype.
+ ,disease to entity association mixin, 
+ ,entity to exposure event association mixin,An association between some entity and an exposure event.
+association,disease to exposure event association,An association between an exposure event and a disease.
+ ,entity to outcome association mixin,An association between some entity and an outcome
+association,exposure event to outcome association,An association between an exposure event and an outcome.
+ ,frequency qualifier mixin,Qualifier for frequency type associations
+frequency qualifier mixin,entity to feature or disease qualifiers mixin,Qualifiers for entity to disease or phenotype associations.
+entity to feature or disease qualifiers mixin,entity to phenotypic feature association mixin, 
+association,information content entity to named thing association,association between a named thing and a information content entity where the specific context of the relationship between that named thing and the publication is unknown. For example  model organisms databases often capture the knowledge that a gene is found in a journal article  but not specifically the context in which that gene was documented in the article. In these cases  this association with the accompanying predicate 'mentions' could be used. Conversely  for more specific associations (like 'gene to disease association'  the publication should be captured as an edge property).
+entity to feature or disease qualifiers mixin,entity to disease association mixin,mixin class for any association whose object (target node) is a disease
+ ,disease or phenotypic feature to entity association mixin, 
+association,disease or phenotypic feature to location association,An association between either a disease or a phenotypic feature and an anatomical entity  where the disease/feature manifests in that site.
+association,disease or phenotypic feature to genetic inheritance association,An association between either a disease or a phenotypic feature and its mode of (genetic) inheritance.
+ ,entity to disease or phenotypic feature association mixin, 
+ ,genotype to entity association mixin, 
+association,genotype to phenotypic feature association,Any association between one genotype and a phenotypic feature  where having the genotype confers the phenotype  either in isolation or through environment
+association,exposure event to phenotypic feature association,Any association between an environment and a phenotypic feature  where being in the environment influences the phenotype.
+association,disease to phenotypic feature association,An association between a disease and a phenotypic feature in which the phenotypic feature is associated with the disease in some way.
+association,case to phenotypic feature association,An association between a case (e.g. individual patient) and a phenotypic feature in which the individual has or has had the phenotype.
+association,behavior to behavioral feature association,An association between an mixture behavior and a behavioral feature manifested by the individual exhibited or has exhibited the behavior.
+ ,gene to entity association mixin, 
+ ,variant to entity association mixin, 
+association,gene to disease or phenotypic feature association, 
+gene to disease or phenotypic feature association,gene to phenotypic feature association, 
+gene to disease or phenotypic feature association,gene to disease association, 
+gene to disease association,causal gene to disease association, 
+gene to disease association,correlated gene to disease association, 
+gene to disease association,druggable gene to disease association, 
+association,variant to gene association,An association between a variant and a gene  where the variant has a genetic association with the gene (i.e. is in linkage disequilibrium)
+variant to gene association,variant to gene expression association,An association between a variant and expression of a gene (i.e. e-QTL)
+association,variant to population association,An association between a variant and a population  where the variant has particular frequency in the population
+association,population to population association,An association between a two populations
+association,variant to phenotypic feature association, 
+association,variant to disease association, 
+association,genotype to disease association, 
+ ,model to disease association mixin,This mixin is used for any association class for which the subject (source node) plays the role of a 'model'  in that it recapitulates some features of the disease in a way that is useful for studying the disease outside a patient carrying the disease
+gene to disease association,gene as a model of disease association, 
+variant to disease association,variant as a model of disease association, 
+genotype to disease association,genotype as a model of disease association, 
+cell line to disease or phenotypic feature association,cell line as a model of disease association, 
+association,organismal entity as a model of disease association, 
+association,organism to organism association, 
+association,taxon to taxon association, 
+gene to disease association,gene has variant that contributes to disease association, 
+association,gene to expression site association,An association between a gene and a gene expression site  possibly qualified by stage/timing info.
+association,sequence variant modulates treatment association,An association between a sequence variant and a treatment or health intervention. The treatment object itself encompasses both the disease and the drug used.
+association,functional association,An association between a macromolecular machine mixin (gene  gene product or complex of gene products) and either a molecular activity  a biological process or a cellular location in which a function is executed.
+ ,macromolecular machine to entity association mixin,an association which has a macromolecular machine mixin as a subject
+functional association,macromolecular machine to molecular activity association,A functional association between a macromolecular machine (gene  gene product or complex) and a molecular activity (as represented in the GO molecular function branch)  where the entity carries out the activity  or contributes to its execution.
+functional association,macromolecular machine to biological process association,A functional association between a macromolecular machine (gene  gene product or complex) and a biological process or pathway (as represented in the GO biological process branch)  where the entity carries out some part of the process  regulates it  or acts upstream of it.
+functional association,macromolecular machine to cellular component association,A functional association between a macromolecular machine (gene  gene product or complex) and a cellular component (as represented in the GO cellular component branch)  where the entity carries out its function in the cellular component.
+association,molecular activity to chemical entity association,Added in response to capturing relationship between microbiome activities as measured via measurements of blood analytes as collected via blood and stool samples
+association,molecular activity to molecular activity association,Added in response to capturing relationship between microbiome activities as measured via measurements of blood analytes as collected via blood and stool samples
+functional association,functional association, 
+functional association,gene to go term association, 
+association,entity to disease association, 
+association,entity to phenotypic feature association, 
+association,sequence association,An association between a sequence feature and a nucleic acid entity it is localized to.
+sequence association,genomic sequence localization,A relationship between a sequence feature and a nucleic acid entity it is localized to. The reference entity may be a chromosome  chromosome region or information entity such as a contig.
+association,sequence feature relationship,For example  a particular exon is part of a particular transcript or gene
+sequence feature relationship,transcript to gene relationship,A gene is a collection of transcripts
+sequence feature relationship,gene to gene product relationship,A gene is transcribed and potentially translated to a gene product
+sequence feature relationship,exon to transcript relationship,A transcript is formed from multiple exons
+association,chemical entity or gene or gene product regulates gene association,A regulatory relationship between two genes
+association,anatomical entity to anatomical entity association, 
+anatomical entity to anatomical entity association,anatomical entity to anatomical entity part of association,A relationship between two anatomical entities where the relationship is mereological  i.e the two entities are related by parthood. This includes relationships between cellular components and cells  between cells and tissues  tissues and whole organisms
+anatomical entity to anatomical entity association,anatomical entity to anatomical entity ontogenic association,A relationship between two anatomical entities where the relationship is ontogenic  i.e. the two entities are related by development. A number of different relationship types can be used to specify the precise nature of the relationship.
+ ,organism taxon to entity association,An association between an organism taxon and another entity
+association,organism taxon to organism taxon association,A relationship between two organism taxon nodes
+organism taxon to organism taxon association,organism taxon to organism taxon specialization,A child-parent relationship between two taxa. For example: Homo sapiens subclass_of Homo
+organism taxon to organism taxon association,organism taxon to organism taxon interaction,An interaction relationship between two taxa. This may be a symbiotic relationship (encompassing mutualism and parasitism)  or it may be non-symbiotic. Example: plague transmitted_by flea; cattle domesticated_by Homo sapiens; plague infects Homo sapiens
+association,organism taxon to environment association, 
